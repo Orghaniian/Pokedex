@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="TextAppearance.Pokédex.TitleMedium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textFontWeight">@integer/FontWeight.Medium</item>
+    </style>
+    <style name="TextAppearance.Pokédex.TitleSmall" parent="TextAppearance.Material3.TitleSmall">
+        <item name="android:textFontWeight">@integer/FontWeight.Medium</item>
+    </style>
+
+    <style name="TextAppearance.Pokédex.HeadlineLarge" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="android:textFontWeight">@integer/FontWeight.Medium</item>
+    </style>
+
+    <style name="TextAppearance.Pokédex.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:textFontWeight">@integer/FontWeight.SemiBold</item>
+    </style>
+    <style name="TextAppearance.Pokédex.LabelMedium" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:textFontWeight">@integer/FontWeight.Medium</item>
+    </style>
+    <style name="TextAppearance.Pokédex.LabelSmall" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:textFontWeight">@integer/FontWeight.Medium</item>
+    </style>
+</resources>
