@@ -1,33 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="TextAppearance.Pokédex.HeadlineLarge" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="TextAppearance.Pokédex.HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium">
+    </style>
+    <style name="TextAppearance.Pokédex.HeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall">
+    </style>
+
     <style name="TextAppearance.Pokédex.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
     </style>
     <style name="TextAppearance.Pokédex.TitleMedium" parent="TextAppearance.Material3.TitleMedium">
     </style>
     <style name="TextAppearance.Pokédex.TitleSmall" parent="TextAppearance.Material3.TitleSmall">
     </style>
-    
+
     <style name="TextAppearance.Pokédex.DisplayLarge" parent="TextAppearance.Material3.DisplayLarge">
     </style>
     <style name="TextAppearance.Pokédex.DisplayMedium" parent="TextAppearance.Material3.DisplayMedium">
     </style>
     <style name="TextAppearance.Pokédex.DisplaySmall" parent="TextAppearance.Material3.DisplaySmall">
     </style>
-    
-    <style name="TextAppearance.Pokédex.HeadlineLarge" parent="TextAppearance.Material3.HeadlineLarge">
-    </style>
-    <style name="TextAppearance.Pokédex.HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium">
-    </style>
-    <style name="TextAppearance.Pokédex.HeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall">
-    </style>
-    
+
     <style name="TextAppearance.Pokédex.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
     </style>
     <style name="TextAppearance.Pokédex.BodyMedium" parent="TextAppearance.Material3.BodyMedium">
     </style>
     <style name="TextAppearance.Pokédex.BodySmall" parent="TextAppearance.Material3.BodySmall">
     </style>
-    
+
     <style name="TextAppearance.Pokédex.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
     </style>
     <style name="TextAppearance.Pokédex.LabelMedium" parent="TextAppearance.Material3.LabelMedium">

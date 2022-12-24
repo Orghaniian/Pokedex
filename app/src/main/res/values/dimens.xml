@@ -1,3 +1,11 @@
 <resources>
-    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="corner_radius">16dp</dimen>
+    <dimen name="type_chip_height">22dp</dimen>
+    <dimen name="type_chip_padding_horizontal">6dp</dimen>
+    <dimen name="type_chip_icon_size">14dp</dimen>
+    <dimen name="type_chip_spacing">4dp</dimen>
+    <dimen name="pokemon_list_item_padding">8dp</dimen>
+    <dimen name="pokemon_list_item_left_column_margin">4dp</dimen>
+    <dimen name="pokemon_list_item_name_margin_bottom">10dp</dimen>
+    <dimen name="pokemon_list_item_types_spacing">5dp</dimen>
 </resources>
