@@ -1,6 +1,7 @@
 package com.orghaniian.pokedex.ui.pokemonlist
 
 import android.content.Context
+import android.graphics.drawable.LayerDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,7 +36,13 @@ class PokemonListAdapter(
         private val spriteImageView: ImageView = view.findViewById(R.id.sprite)
 
         fun bind(item: PokemonListItemUiState) {
-            view.background.setTint(ContextCompat.getColor(context, item.color.getColorResource()))
+            (view.background as LayerDrawable).run {
+                findDrawableByLayerId(R.id.card)
+                    .setTint(ContextCompat.getColor(context, item.color.getColorResource()))
+                findDrawableByLayerId(R.id.pokeball)
+                    .setTint(0x4CFFFFFF)
+            }
+
             nameTextView.text = formatNameUseCase(item.name)
             orderTextView.text = formatOrderUseCase(item.order)
 
@@ -45,6 +52,9 @@ class PokemonListAdapter(
                     findViewById<ImageView>(R.id.icon).setImageDrawable(type.getIconDrawable(context))
                 })
             }
+
+            spriteImageView.contentDescription = context
+                .getString(R.string.pokemon_image_content_description, item.name)
 
             Glide.with(itemView)
                 .load(item.spriteUrl)
