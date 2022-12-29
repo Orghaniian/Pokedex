@@ -1,29 +1,31 @@
 package com.orghaniian.pokedex.data
 
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import com.orghaniian.pokedex.data.local.Pokemon
 import com.orghaniian.pokedex.data.local.PokemonLocalDataSource
-import com.orghaniian.pokedex.data.model.Pokemon
+import com.orghaniian.pokedex.data.paging.PokemonRemoteMediator
 import com.orghaniian.pokedex.data.remote.PokemonRemoteDataSource
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
+@OptIn(ExperimentalPagingApi::class)
 class PokemonRepositoryImpl @Inject constructor(
     private val pokemonLocalDataSource: PokemonLocalDataSource,
     private val pokemonRemoteDataSource: PokemonRemoteDataSource
 ) : PokemonRepository {
-    override fun getAll(): Flow<List<Pokemon>> = pokemonLocalDataSource.getAll().also {
-        CoroutineScope(Dispatchers.IO).launch {
-            if (it.first().isEmpty()) {
-                pokemonRemoteDataSource.getPokemon().collect { newPokemon ->
-                    pokemonLocalDataSource.insert(newPokemon)
-                }
-            }
-        }
-    }
 
+    override fun getPagingData(config: PagingConfig): Flow<PagingData<Pokemon>> {
+        return Pager(
+            config,
+            null,
+            PokemonRemoteMediator(pokemonRemoteDataSource, pokemonLocalDataSource)
+        ){
+            pokemonLocalDataSource.getPagingSource()
+        }.flow
+    }
 }

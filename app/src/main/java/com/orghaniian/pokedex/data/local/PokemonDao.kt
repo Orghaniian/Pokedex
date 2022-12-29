@@ -1,5 +1,6 @@
 package com.orghaniian.pokedex.data.local
 
+import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -9,11 +10,17 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface PokemonDao {
     @Query("SELECT * FROM pokemons")
-    fun getAll(): Flow<List<PokemonEntity>>
+    fun getAll(): Flow<List<Pokemon>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(pokemons: List<PokemonEntity>)
+    suspend fun insertAll(pokemons: List<Pokemon>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(pokemons: PokemonEntity)
+    suspend fun insert(pokemons: Pokemon)
+
+    @Query("SELECT COUNT(*) FROM pokemons")
+    suspend fun getCount(): Int
+
+    @Query("SELECT * FROM pokemons")
+    fun getPagingSource(): PagingSource<Int, Pokemon>
 }

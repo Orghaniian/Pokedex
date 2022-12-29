@@ -6,14 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.content.ContextCompat
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.orghaniian.pokedex.R
+import com.orghaniian.pokedex.data.model.Type
 import com.orghaniian.pokedex.domain.FormatNameUseCase
 import com.orghaniian.pokedex.domain.FormatOrderUseCase
 import com.orghaniian.pokedex.ui.utils.getColorResource
@@ -22,7 +23,7 @@ import com.orghaniian.pokedex.ui.utils.getIconDrawable
 class PokemonListAdapter(
     private val formatOrderUseCase: FormatOrderUseCase,
     private val formatNameUseCase: FormatNameUseCase
-): ListAdapter<PokemonListItemUiState, PokemonListAdapter.ViewHolder>(PokemonListItemUiStateDiffCallback) {
+): PagingDataAdapter<PokemonListItemUiState, PokemonListAdapter.ViewHolder>(PokemonListItemUiStateDiffCallback) {
 
     class ViewHolder(
         private val view: View,
@@ -32,10 +33,13 @@ class PokemonListAdapter(
     ): RecyclerView.ViewHolder(view) {
         private val nameTextView: TextView = view.findViewById(R.id.name)
         private val orderTextView: TextView = view.findViewById(R.id.order)
-        private val typeLinearLayoutCompat: LinearLayoutCompat = view.findViewById(R.id.types)
         private val spriteImageView: ImageView = view.findViewById(R.id.sprite)
+        private val typeChip1: LinearLayout = view.findViewById(R.id.type1)
+        private val typeChip2: LinearLayout = view.findViewById(R.id.type2)
 
-        fun bind(item: PokemonListItemUiState) {
+        fun bind(item: PokemonListItemUiState?) {
+            if (item == null) return // TODO show placeholder
+
             (view.background as LayerDrawable).run {
                 findDrawableByLayerId(R.id.card)
                     .setTint(ContextCompat.getColor(context, item.color.getColorResource()))
@@ -46,24 +50,8 @@ class PokemonListAdapter(
             nameTextView.text = formatNameUseCase(item.name)
             orderTextView.text = formatOrderUseCase(item.order)
 
-            item.types.forEach { type ->
-                typeLinearLayoutCompat.addView(View.inflate(context, R.layout.type_chip, null).apply {
-                    findViewById<TextView>(R.id.name).text = type.name
-                    findViewById<ImageView>(R.id.icon).apply{
-                        setImageDrawable(type.getIconDrawable(context))
-                        contentDescription = context
-                            .getString(R.string.pokemon_type_image_content_description, type.name)
-                    }
-                })
-            }
-
-
-            // add an invisible if the pokemon has only one type chip to keep height consistent across the screen
-            if(item.types.size == 1) typeLinearLayoutCompat
-                .addView(
-                    View.inflate(context, R.layout.type_chip, null)
-                        .apply { visibility = View.INVISIBLE }
-                )
+            typeChip1.bindType(item.types.getOrNull(0))
+            typeChip2.bindType(item.types.getOrNull(1))
 
             spriteImageView.contentDescription = context
                 .getString(R.string.pokemon_image_content_description, item.name)
@@ -71,6 +59,19 @@ class PokemonListAdapter(
             Glide.with(itemView)
                 .load(item.spriteUrl)
                 .into(spriteImageView)
+        }
+
+        private fun LinearLayout.bindType(type: Type?) {
+            if (type != null ) {
+                findViewById<TextView>(R.id.name).text = type.name
+                findViewById<ImageView>(R.id.icon).apply {
+                    setImageDrawable(type.getIconDrawable(context))
+                    contentDescription = context
+                        .getString(R.string.pokemon_type_image_content_description, type.name)
+                }
+            } else {
+                visibility = View.INVISIBLE
+            }
         }
     }
 

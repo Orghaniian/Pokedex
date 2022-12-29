@@ -32,6 +32,8 @@
         app:divider="@drawable/pokemon_list_item_type_divider"
         app:showDividers="middle"
         >
+        <include android:id="@+id/type1" layout="@layout/type_chip"/>
+        <include android:id="@+id/type2" layout="@layout/type_chip"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <TextView

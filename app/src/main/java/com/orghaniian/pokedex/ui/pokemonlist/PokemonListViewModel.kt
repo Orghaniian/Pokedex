@@ -2,39 +2,24 @@ package com.orghaniian.pokedex.ui.pokemonlist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingConfig
+import androidx.paging.cachedIn
+import androidx.paging.map
 import com.orghaniian.pokedex.data.PokemonRepository
-import com.orghaniian.pokedex.data.model.Pokemon
+import com.orghaniian.pokedex.data.local.Pokemon
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class PokemonListViewModel @Inject constructor(
-    private val repository: PokemonRepository
+    repository: PokemonRepository
 ): ViewModel() {
-    private val _uiState = MutableStateFlow(PokemonListUiState())
-    val uiState: StateFlow<PokemonListUiState> = _uiState.asStateFlow()
 
-    private var fetchJob: Job? = null
+    val pagingData = repository.getPagingData(PagingConfig(PAGE_SIZE)).map { pagingData ->
+        pagingData.map { it.toPokemonListItemUiState() }
+    }.cachedIn(viewModelScope)
 
-    fun fetchPokemons() {
-        fetchJob?.cancel()
-        fetchJob = viewModelScope.launch {
-            repository.getAll().map{ it.toListOfPokemonListItemUiState() }.collect { pokemons ->
-                _uiState.update {
-                    it.copy(pokemons = pokemons)
-                }
-            }
-        }
-    }
-
-    private fun List<Pokemon>.toListOfPokemonListItemUiState() = map{ it.toPokemonListItemUiState() }
 
     private fun Pokemon.toPokemonListItemUiState() = PokemonListItemUiState(
         name,
@@ -43,4 +28,8 @@ class PokemonListViewModel @Inject constructor(
         spriteUrl,
         color
     )
+
+    companion object {
+        private const val PAGE_SIZE = 20
+    }
 }

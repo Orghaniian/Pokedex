@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.paging.LoadState.Loading
 import androidx.recyclerview.widget.GridLayoutManager
 import com.orghaniian.pokedex.databinding.FragmentPokemonListBinding
 import com.orghaniian.pokedex.domain.FormatNameUseCase
@@ -45,21 +47,23 @@ class PokemonListFragment : Fragment() {
 
         val pokemonListAdapter = PokemonListAdapter(formatOrderUseCase, formatNameUseCase)
 
-        with(binding.pokemonList) {
-            adapter = pokemonListAdapter
-            layoutManager = GridLayoutManager(context, 2)
-            addItemDecoration(GridSpacingItemDecoration(context, 2, 8))
-        }
+        binding.bindAdapter(pokemonListAdapter)
 
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.collectLatest { uiState ->
-                    pokemonListAdapter.submitList(uiState.pokemons)
+                viewModel.pagingData.collectLatest { pagingData ->
+                    pokemonListAdapter.submitData(pagingData)
                 }
             }
         }
-        viewModel.fetchPokemons()
-
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                pokemonListAdapter.loadStateFlow.collect {
+                    binding.prependProgress.isVisible = it.source.prepend is Loading
+                    binding.appendProgress.isVisible = it.source.append is Loading
+                }
+            }
+        }
 
         return binding.root
     }
@@ -68,4 +72,10 @@ class PokemonListFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+}
+
+private fun FragmentPokemonListBinding.bindAdapter(pokemonListAdapter: PokemonListAdapter) = with(pokemonList) {
+    adapter = pokemonListAdapter
+    layoutManager = GridLayoutManager(context, 2)
+    addItemDecoration(GridSpacingItemDecoration(context, 2, 8))
 }
