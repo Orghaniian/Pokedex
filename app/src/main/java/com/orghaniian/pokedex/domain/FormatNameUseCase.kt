@@ -1,8 +1,9 @@
 package com.orghaniian.pokedex.domain
 
 import java.util.*
+import javax.inject.Inject
 
-class FormatNameUseCase {
+class FormatNameUseCase @Inject constructor() {
 
     operator fun invoke(name: String): String {
         return name.replaceFirstChar { it.titlecase(Locale.getDefault()) }

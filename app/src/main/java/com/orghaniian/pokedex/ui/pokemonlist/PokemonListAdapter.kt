@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.recyclerview.widget.ListAdapter
 import android.widget.TextView
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.orghaniian.pokedex.R
@@ -49,9 +49,21 @@ class PokemonListAdapter(
             item.types.forEach { type ->
                 typeLinearLayoutCompat.addView(View.inflate(context, R.layout.type_chip, null).apply {
                     findViewById<TextView>(R.id.name).text = type.name
-                    findViewById<ImageView>(R.id.icon).setImageDrawable(type.getIconDrawable(context))
+                    findViewById<ImageView>(R.id.icon).apply{
+                        setImageDrawable(type.getIconDrawable(context))
+                        contentDescription = context
+                            .getString(R.string.pokemon_type_image_content_description, type.name)
+                    }
                 })
             }
+
+
+            // add an invisible if the pokemon has only one type chip to keep height consistent across the screen
+            if(item.types.size == 1) typeLinearLayoutCompat
+                .addView(
+                    View.inflate(context, R.layout.type_chip, null)
+                        .apply { visibility = View.INVISIBLE }
+                )
 
             spriteImageView.contentDescription = context
                 .getString(R.string.pokemon_image_content_description, item.name)
