@@ -1,5 +1,6 @@
 package com.orghaniian.pokedex.data
 
+import androidx.core.os.LocaleListCompat
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -20,11 +21,11 @@ class PokemonRepositoryImpl @Inject constructor(
     private val pokemonRemoteDataSource: PokemonRemoteDataSource
 ) : PokemonRepository {
 
-    override fun getPagingData(config: PagingConfig): Flow<PagingData<Pokemon>> {
+    override fun getPagingData(config: PagingConfig, locales: LocaleListCompat): Flow<PagingData<Pokemon>> {
         return Pager(
             config,
             null,
-            PokemonRemoteMediator(pokemonRemoteDataSource, pokemonLocalDataSource)
+            PokemonRemoteMediator(pokemonRemoteDataSource, pokemonLocalDataSource, locales)
         ){
             pokemonLocalDataSource.getPagingSource()
         }.flow

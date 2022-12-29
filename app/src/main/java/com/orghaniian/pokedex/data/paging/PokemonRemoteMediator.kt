@@ -1,5 +1,6 @@
 package com.orghaniian.pokedex.data.paging
 
+import androidx.core.os.LocaleListCompat
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
@@ -13,11 +14,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
+import java.util.*
 
 @OptIn(ExperimentalPagingApi::class)
 class PokemonRemoteMediator(
     private val pokemonRemoteDataSource: PokemonRemoteDataSource,
-    private val pokemonLocalDataSource: PokemonLocalDataSource
+    private val pokemonLocalDataSource: PokemonLocalDataSource,
+    private val locales: LocaleListCompat
 ): RemoteMediator<Int, Pokemon>() {
 
     override suspend fun initialize(): InitializeAction = SKIP_INITIAL_REFRESH
@@ -34,7 +37,7 @@ class PokemonRemoteMediator(
                 LoadType.APPEND -> pokemonLocalDataSource.getCount()
             }
 
-            val response = pokemonRemoteDataSource.getAllPokemon(state.config.pageSize, offset)
+            val response = pokemonRemoteDataSource.getAllPokemon(locales, state.config.pageSize, offset)
 
             CoroutineScope(Dispatchers.IO).launch {
                 pokemonLocalDataSource.insertAll(response.results)

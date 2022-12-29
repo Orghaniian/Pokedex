@@ -1,6 +1,8 @@
 package com.orghaniian.pokedex.ui.pokemonlist
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.core.os.LocaleListCompat
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
@@ -13,10 +15,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PokemonListViewModel @Inject constructor(
-    repository: PokemonRepository
-): ViewModel() {
+    repository: PokemonRepository, application: Application
+): AndroidViewModel(application) {
 
-    val pagingData = repository.getPagingData(PagingConfig(PAGE_SIZE)).map { pagingData ->
+    val pagingData = repository.getPagingData(PagingConfig(PAGE_SIZE), LocaleListCompat.getAdjustedDefault()).map { pagingData ->
         pagingData.map { it.toPokemonListItemUiState() }
     }.cachedIn(viewModelScope)
 
