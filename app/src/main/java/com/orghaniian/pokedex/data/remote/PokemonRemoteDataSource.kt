@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 class PokemonRemoteDataSource @Inject constructor(private val pokeApiService: PokeApiService) {
 
-    fun getPokemon(limit: Int? = null, offset: Int? = null): Flow<Pokemon> = flow {
+    fun getPokemon(limit: Int? = 151, offset: Int? = null): Flow<Pokemon> = flow {
         pokeApiService.run {
             getPokemon(limit, offset).results.forEach { (name, _) ->
                 val pokemon = getPokemon(name)

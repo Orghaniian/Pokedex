@@ -23,10 +23,10 @@ class PokemonListViewModel @Inject constructor(
 
     private var fetchJob: Job? = null
 
-    fun fetchPokemons(offset: Int = 0, limit: Int = 20) {
+    fun fetchPokemons() {
         fetchJob?.cancel()
         fetchJob = viewModelScope.launch {
-            repository.getAll(offset, limit).map{ it.toListOfPokemonListItemUiState() }.collect { pokemons ->
+            repository.getAll().map{ it.toListOfPokemonListItemUiState() }.collect { pokemons ->
                 _uiState.update {
                     it.copy(pokemons = pokemons)
                 }
