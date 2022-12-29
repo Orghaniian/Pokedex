@@ -10,5 +10,5 @@ import kotlinx.coroutines.flow.Flow
 interface PokemonRepository {
     fun getPagingData(config: PagingConfig, locales: LocaleListCompat): Flow<PagingData<Pokemon>>
 
-    fun getPokemon(order: Int): Flow<PokemonDetails>
+    suspend fun getPokemonDetails(order: Int): PokemonDetails
 }

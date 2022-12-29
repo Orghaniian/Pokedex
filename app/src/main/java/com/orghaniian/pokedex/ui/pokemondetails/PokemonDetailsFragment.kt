@@ -6,11 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.navArgs
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.orghaniian.pokedex.databinding.FragmentPokemonDetailsBinding
 import com.orghaniian.pokedex.domain.FormatNameUseCase
 import com.orghaniian.pokedex.domain.FormatOrderUseCase
+import com.orghaniian.pokedex.ui.utils.getColorResource
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -22,7 +27,6 @@ class PokemonDetailsFragment : Fragment() {
     lateinit var formatNameUseCase: FormatNameUseCase
 
     private val viewModel: PokemonDetailsViewModel by viewModels()
-    private val args: PokemonDetailsFragmentArgs by navArgs()
     private var _binding: FragmentPokemonDetailsBinding? = null
 
 
@@ -36,6 +40,14 @@ class PokemonDetailsFragment : Fragment() {
     ): View {
         _binding = FragmentPokemonDetailsBinding.inflate(inflater, container, false)
 
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collectLatest { uiState ->
+                    uiState?.let { binding.bindUIState(it) }
+                }
+            }
+        }
+
         return binding.root
     }
 
@@ -44,7 +56,8 @@ class PokemonDetailsFragment : Fragment() {
         _binding = null
     }
 
-    companion object {
-        fun newInstance() = PokemonDetailsFragment()
+    private fun FragmentPokemonDetailsBinding.bindUIState(uiState: PokemonDetailsUiState) {
+        root.setBackgroundResource(uiState.color.getColorResource())
     }
 }
+

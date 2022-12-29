@@ -2,9 +2,12 @@ package com.orghaniian.pokedex.data.remote
 
 import androidx.core.os.LocaleListCompat
 import com.orghaniian.pokedex.data.local.Pokemon
+import com.orghaniian.pokedex.data.local.PokemonDetails
 import com.orghaniian.pokedex.data.model.Color
 import com.orghaniian.pokedex.data.model.Type
+import com.orghaniian.pokedex.data.remote.model.ColorResource
 import com.orghaniian.pokedex.data.remote.model.GetAllResponse
+import com.orghaniian.pokedex.data.remote.model.PokemonType
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
@@ -28,7 +31,18 @@ class PokemonRemoteDataSource @Inject constructor(private val pokeApiService: Po
         )
     }
 
-    suspend fun getPokemon(id: Int) = pokeApiService.getPokemon(id)
+    suspend fun getPokemonDetails(order: Int) = pokeApiService.run {
+        val pokemon = getPokemon(order)
+        val species = pokeApiService.getPokemonSpecies(order)
+
+        PokemonDetails(
+            pokemon.id,
+            pokemon.name,
+            pokemon.types.toListOfType(),
+            species.color.toColor(),
+            spriteUrl = pokemon.sprites.other.officialArtwork.frontDefault
+        )
+    }
 
     private suspend fun PokeApiService.fetchPokemon(name: String, locales: LocaleListCompat): Pokemon {
         val pokemon = getPokemon(name)
@@ -40,9 +54,12 @@ class PokemonRemoteDataSource @Inject constructor(private val pokeApiService: Po
         return Pokemon(
             name = species.names.firstOrNull { it.language.name == localeForName?.language }?.name ?: pokemon.name,
             order = pokemon.id,
-            types = pokemon.types.map { Type.valueOf(it.type.name.uppercase()) },
-            color = Color.valueOf(species.color.name.uppercase()),
+            types = pokemon.types.toListOfType(),
+            color = species.color.toColor(),
             spriteUrl = pokemon.sprites.other.officialArtwork.frontDefault
         )
     }
 }
+
+private fun List<PokemonType>.toListOfType() = map { Type.valueOf(it.type.name.uppercase()) }
+private fun ColorResource.toColor() = Color.valueOf(name.uppercase())

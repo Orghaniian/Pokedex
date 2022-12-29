@@ -11,7 +11,7 @@ data class Pokemon(
 
 data class PokemonType(
     @SerializedName("slot") val slot: Int,
-    @SerializedName("type") val type: NamedAPIResource
+    @SerializedName("type") val type: TypeResource
 )
 
 data class PokemonSprites(

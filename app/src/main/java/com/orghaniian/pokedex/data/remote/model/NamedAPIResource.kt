@@ -6,3 +6,7 @@ data class NamedAPIResource (
     @SerializedName("name") val name: String,
     @SerializedName("url") val url: String
 )
+
+typealias ColorResource = NamedAPIResource
+typealias TypeResource = NamedAPIResource
+typealias LanguageResource = NamedAPIResource

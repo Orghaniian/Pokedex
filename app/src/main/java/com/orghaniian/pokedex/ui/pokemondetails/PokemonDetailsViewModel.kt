@@ -6,9 +6,8 @@ import androidx.lifecycle.viewModelScope
 import com.orghaniian.pokedex.data.PokemonRepository
 import com.orghaniian.pokedex.data.local.PokemonDetails
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -18,13 +17,14 @@ class PokemonDetailsViewModel @Inject constructor(
     repository: PokemonRepository
 ) : ViewModel() {
 
-    lateinit var uiState: StateFlow<PokemonDetailsUiState>
-        private set
+    private val _uiState = MutableStateFlow<PokemonDetailsUiState?>(null)
+
+    val uiState = _uiState.asStateFlow()
 
     init {
         viewModelScope.launch {
             val order = PokemonDetailsFragmentArgs.fromSavedStateHandle(savedStateHandle).order
-            uiState = repository.getPokemon(order).map { it.toPokemonDetailsUiState() }.stateIn(viewModelScope)
+            _uiState.emit(repository.getPokemonDetails(order).toPokemonDetailsUiState())
         }
     }
 

@@ -10,7 +10,10 @@ import com.orghaniian.pokedex.data.local.PokemonDetails
 import com.orghaniian.pokedex.data.local.PokemonLocalDataSource
 import com.orghaniian.pokedex.data.paging.PokemonRemoteMediator
 import com.orghaniian.pokedex.data.remote.PokemonRemoteDataSource
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -31,7 +34,14 @@ class PokemonRepositoryImpl @Inject constructor(
         }.flow
     }
 
-    override fun getPokemon(order: Int): Flow<PokemonDetails> {
-        return pokemonLocalDataSource.getPokemon(order)
+    override suspend fun getPokemonDetails(order: Int): PokemonDetails {
+        var pokemonDetails = pokemonLocalDataSource.getPokemonDetails(order)
+        if (pokemonDetails == null) {
+            pokemonDetails = pokemonRemoteDataSource.getPokemonDetails(order)
+            CoroutineScope(Dispatchers.IO).launch {
+                pokemonLocalDataSource.insert(pokemonDetails)
+            }
+        }
+        return pokemonDetails
     }
 }

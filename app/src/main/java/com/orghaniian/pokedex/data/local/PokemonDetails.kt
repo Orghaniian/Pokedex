@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 import com.orghaniian.pokedex.data.model.Color
 import com.orghaniian.pokedex.data.model.Type
 
+//TODO add necessary attributes
 @Entity(tableName = "pokemons_details")
 data class PokemonDetails(
     @PrimaryKey @ColumnInfo(name = "pokedex_order") val order: Int,
