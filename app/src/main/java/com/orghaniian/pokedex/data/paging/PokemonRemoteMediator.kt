@@ -4,6 +4,7 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
+import androidx.paging.RemoteMediator.InitializeAction.SKIP_INITIAL_REFRESH
 import com.orghaniian.pokedex.data.local.Pokemon
 import com.orghaniian.pokedex.data.local.PokemonLocalDataSource
 import com.orghaniian.pokedex.data.remote.PokemonRemoteDataSource
@@ -15,6 +16,8 @@ class PokemonRemoteMediator(
     private val pokemonRemoteDataSource: PokemonRemoteDataSource,
     private val pokemonLocalDataSource: PokemonLocalDataSource
 ): RemoteMediator<Int, Pokemon>() {
+
+    override suspend fun initialize(): InitializeAction = SKIP_INITIAL_REFRESH
 
     override suspend fun load(
         loadType: LoadType,
