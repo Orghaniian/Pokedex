@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.navigation.findNavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -38,7 +39,7 @@ class PokemonListAdapter(
         private val typeChip2: LinearLayout = view.findViewById(R.id.type2)
 
         fun bind(item: PokemonListItemUiState?) {
-            if (item == null) return // TODO show placeholder
+            if (item == null) return
 
             (view.background as LayerDrawable).run {
                 findDrawableByLayerId(R.id.card)
@@ -59,6 +60,14 @@ class PokemonListAdapter(
             Glide.with(itemView)
                 .load(item.spriteUrl)
                 .into(spriteImageView)
+
+            itemView.setOnClickListener {
+                val action = PokemonListFragmentDirections
+                    .actionPokemonListFragmentToPokemonDetailsFragment(
+                        item.order, formatNameUseCase(item.name)
+                    )
+                it.findNavController().navigate(action)
+            }
         }
 
         private fun LinearLayout.bindType(type: Type?) {

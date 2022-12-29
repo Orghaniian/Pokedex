@@ -8,6 +8,9 @@ import androidx.paging.RemoteMediator.InitializeAction.SKIP_INITIAL_REFRESH
 import com.orghaniian.pokedex.data.local.Pokemon
 import com.orghaniian.pokedex.data.local.PokemonLocalDataSource
 import com.orghaniian.pokedex.data.remote.PokemonRemoteDataSource
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -33,7 +36,9 @@ class PokemonRemoteMediator(
 
             val response = pokemonRemoteDataSource.getAllPokemon(state.config.pageSize, offset)
 
-            pokemonLocalDataSource.insertAll(response.results)
+            CoroutineScope(Dispatchers.IO).launch {
+                pokemonLocalDataSource.insertAll(response.results)
+            }
 
             MediatorResult.Success(!response.next)
         } catch (e: IOException) {

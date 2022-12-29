@@ -5,6 +5,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.orghaniian.pokedex.data.local.Pokemon
+import com.orghaniian.pokedex.data.local.PokemonDetails
 import com.orghaniian.pokedex.data.local.PokemonLocalDataSource
 import com.orghaniian.pokedex.data.paging.PokemonRemoteMediator
 import com.orghaniian.pokedex.data.remote.PokemonRemoteDataSource
@@ -27,5 +28,9 @@ class PokemonRepositoryImpl @Inject constructor(
         ){
             pokemonLocalDataSource.getPagingSource()
         }.flow
+    }
+
+    override fun getPokemon(order: Int): Flow<PokemonDetails> {
+        return pokemonLocalDataSource.getPokemon(order)
     }
 }

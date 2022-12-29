@@ -27,6 +27,8 @@ class PokemonRemoteDataSource @Inject constructor(private val pokeApiService: Po
         )
     }
 
+    suspend fun getPokemon(id: Int) = pokeApiService.getPokemon(id)
+
     private suspend fun PokeApiService.fetchPokemon(name: String): Pokemon {
         val pokemon = getPokemon(name)
         val species = getPokemonSpecies(name)
