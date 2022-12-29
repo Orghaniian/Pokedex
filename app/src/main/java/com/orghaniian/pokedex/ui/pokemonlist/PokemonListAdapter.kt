@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.os.LocaleListCompat
 import androidx.navigation.findNavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -72,11 +73,12 @@ class PokemonListAdapter(
 
         private fun LinearLayout.bindType(type: Type?) {
             if (type != null ) {
-                findViewById<TextView>(R.id.name).text = type.name
+                val typeName = type.localizedName(LocaleListCompat.getAdjustedDefault().get(0))
+                findViewById<TextView>(R.id.name).text = typeName
                 findViewById<ImageView>(R.id.icon).apply {
                     setImageDrawable(type.getIconDrawable(context))
                     contentDescription = context
-                        .getString(R.string.pokemon_type_image_content_description, type.name)
+                        .getString(R.string.pokemon_type_image_content_description, typeName)
                 }
             } else {
                 visibility = View.INVISIBLE
