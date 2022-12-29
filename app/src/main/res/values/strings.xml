@@ -2,4 +2,5 @@
     <string name="app_name">Pokédex</string>
     <string name="pokemon_list_fragment_label">Pokédex</string>
     <string name="pokemon_image_content_description">Illustration de %1$s</string>
+    <string name="pokemon_type_image_content_description">Type %1$s</string>
 </resources>
