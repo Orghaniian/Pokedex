@@ -160,7 +160,7 @@ internal class PokemonRepositoryImplTest {
 
     @Test fun getAllTest() = runBlocking {
         repo.getAll().collectIndexed { index, value ->
-            assertEquals(expectedPokemons[index], value)
+            assertEquals(expectedPokemons.subList(0, index + 1), value)
         }
     }
 }

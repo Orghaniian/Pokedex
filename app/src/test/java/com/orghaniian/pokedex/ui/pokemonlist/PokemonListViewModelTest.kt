@@ -150,8 +150,8 @@ internal class PokemonListViewModelTest {
 
     private val fakeRepository = object: PokemonRepository {
         override fun getAll(offset: Int, limit: Int) = flow {
-            pokemons.forEach {
-                emit(it)
+            pokemons.indices.forEach { index ->
+                emit(pokemons.subList(0, index))
             }
         }
     }

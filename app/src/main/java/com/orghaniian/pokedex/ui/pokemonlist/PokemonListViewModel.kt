@@ -26,13 +26,15 @@ class PokemonListViewModel @Inject constructor(
     fun fetchPokemons(offset: Int = 0, limit: Int = 20) {
         fetchJob?.cancel()
         fetchJob = viewModelScope.launch {
-            repository.getAll(offset, limit).map{ it.toPokemonListItemUiState() }.collect { newPokemon ->
+            repository.getAll(offset, limit).map{ it.toListOfPokemonListItemUiState() }.collect { pokemons ->
                 _uiState.update {
-                    it.copy(pokemons = it.pokemons.plus(newPokemon))
+                    it.copy(pokemons = pokemons)
                 }
             }
         }
     }
+
+    private fun List<Pokemon>.toListOfPokemonListItemUiState() = map{ it.toPokemonListItemUiState() }
 
     private fun Pokemon.toPokemonListItemUiState() = PokemonListItemUiState(
         name,
