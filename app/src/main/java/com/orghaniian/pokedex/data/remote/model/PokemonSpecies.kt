@@ -15,7 +15,8 @@ data class PokemonSpecies(
     @SerializedName("form_descriptions") val formDescriptions: List<Description>,
     @SerializedName("forms_switchable") val formsSwitchable: Boolean,
     @SerializedName("names") val names: List<Name>,
-) {
+    @SerializedName("gender_rate") val genderRate: Int
+    ) {
     data class FlavorText(
         @SerializedName("flavor_text") val flavorText: String,
         @SerializedName("language") val language: NamedAPIResource,

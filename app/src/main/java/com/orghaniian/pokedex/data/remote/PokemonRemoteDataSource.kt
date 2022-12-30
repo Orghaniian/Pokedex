@@ -40,7 +40,10 @@ class PokemonRemoteDataSource @Inject constructor(private val pokeApiService: Po
             pokemon.name,
             pokemon.types.toListOfType(),
             species.color.toColor(),
-            spriteUrl = pokemon.sprites.other.officialArtwork.frontDefault
+            spriteUrl = pokemon.sprites.other.officialArtwork.frontDefault,
+            (8f - species.genderRate)/8f,
+            pokemon.height / 100f,
+            pokemon.weight / 10f
         )
     }
 

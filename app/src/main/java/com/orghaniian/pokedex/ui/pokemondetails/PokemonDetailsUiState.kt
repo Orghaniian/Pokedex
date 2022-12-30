@@ -8,5 +8,8 @@ data class PokemonDetailsUiState(
     val order: Int,
     val types: List<Type>,
     val spriteUrl: String,
-    val color: Color
+    val color: Color,
+    val height: Float,
+    val weight: Float,
+    val genderRate: Float
 )

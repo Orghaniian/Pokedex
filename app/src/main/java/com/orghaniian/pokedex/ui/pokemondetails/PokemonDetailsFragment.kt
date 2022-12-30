@@ -91,6 +91,7 @@ class PokemonDetailsFragment : Fragment() {
     }
 
     private inner class PokemonDetailsStateAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+
         override fun getItemCount(): Int = NUM_TABS
 
         override fun createFragment(position: Int): Fragment = when(position) {

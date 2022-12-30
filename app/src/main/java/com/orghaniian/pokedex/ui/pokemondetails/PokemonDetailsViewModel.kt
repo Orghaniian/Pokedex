@@ -34,7 +34,10 @@ class PokemonDetailsViewModel @Inject constructor(
             order,
             types,
             spriteUrl,
-            color
+            color,
+            height,
+            weight,
+            genderRate
         )
     }
 }
