@@ -9,18 +9,16 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.core.os.LocaleListCompat
 import androidx.navigation.findNavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.orghaniian.pokedex.R
-import com.orghaniian.pokedex.data.model.Type
 import com.orghaniian.pokedex.domain.FormatNameUseCase
 import com.orghaniian.pokedex.domain.FormatOrderUseCase
+import com.orghaniian.pokedex.ui.utils.bindType
 import com.orghaniian.pokedex.ui.utils.getColorResource
-import com.orghaniian.pokedex.ui.utils.getIconDrawable
 
 class PokemonListAdapter(
     private val formatOrderUseCase: FormatOrderUseCase,
@@ -68,20 +66,6 @@ class PokemonListAdapter(
                         item.order, formatNameUseCase(item.name)
                     )
                 it.findNavController().navigate(action)
-            }
-        }
-
-        private fun LinearLayout.bindType(type: Type?) {
-            if (type != null ) {
-                val typeName = type.localizedName(LocaleListCompat.getAdjustedDefault().get(0))
-                findViewById<TextView>(R.id.name).text = typeName
-                findViewById<ImageView>(R.id.icon).apply {
-                    setImageDrawable(type.getIconDrawable(context))
-                    contentDescription = context
-                        .getString(R.string.pokemon_type_image_content_description, typeName)
-                }
-            } else {
-                visibility = View.INVISIBLE
             }
         }
     }
