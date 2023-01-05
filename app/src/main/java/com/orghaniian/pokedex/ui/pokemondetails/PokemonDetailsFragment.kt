@@ -18,14 +18,14 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.google.android.material.transition.MaterialContainerTransform
 import com.orghaniian.pokedex.R
 import com.orghaniian.pokedex.databinding.FragmentPokemonDetailsBinding
-import com.orghaniian.pokedex.domain.FormatNameUseCase
-import com.orghaniian.pokedex.domain.FormatOrderUseCase
+import com.orghaniian.domain.FormatNameUseCase
+import com.orghaniian.domain.FormatOrderUseCase
 import com.orghaniian.pokedex.ui.pokemondetails.about.AboutFragment
 import com.orghaniian.pokedex.ui.pokemondetails.basestats.BaseStatsFragment
 import com.orghaniian.pokedex.ui.pokemondetails.evolution.EvolutionFragment
 import com.orghaniian.pokedex.ui.pokemondetails.moves.MovesFragment
 import com.orghaniian.pokedex.ui.utils.bindType
-import com.orghaniian.pokedex.ui.utils.getColorResource
+import com.orghaniian.pokedex.ui.utils.colorResourceID
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -101,7 +101,7 @@ class PokemonDetailsFragment : Fragment() {
     }
 
     private fun FragmentPokemonDetailsBinding.bindUIState(uiState: PokemonDetailsUiState) {
-        root.setBackgroundResource(uiState.color.getColorResource())
+        root.setBackgroundResource(uiState.color.colorResourceID)
 
         name.text = formatNameUseCase(uiState.name)
         order.text = formatOrderUseCase(uiState.order)

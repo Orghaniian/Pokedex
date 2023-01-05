@@ -4,7 +4,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 internal class FormatOrderUseCaseTest {
-    private val formatOrderUseCase = FormatOrderUseCase()
+    private val formatOrderUseCase = com.orghaniian.domain.FormatOrderUseCase()
 
     @Test
     operator fun invoke() {

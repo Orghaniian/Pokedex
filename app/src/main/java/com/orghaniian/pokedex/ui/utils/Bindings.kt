@@ -5,7 +5,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.orghaniian.pokedex.R
-import com.orghaniian.pokedex.data.model.Type
+import com.orghaniian.data.model.Type
 
 fun LinearLayout.bindType(type: Type?) {
     if (type != null ) {

@@ -1,11 +1,7 @@
 package com.orghaniian.pokedex.ui.pokemonlist
 
-import com.orghaniian.pokedex.data.model.Color
-import com.orghaniian.pokedex.data.model.Type
-
-data class PokemonListUiState(
-    val pokemons: List<PokemonListItemUiState> = emptyList()
-)
+import com.orghaniian.data.model.Color
+import com.orghaniian.data.model.Type
 
 data class PokemonListItemUiState(
     val name: String,

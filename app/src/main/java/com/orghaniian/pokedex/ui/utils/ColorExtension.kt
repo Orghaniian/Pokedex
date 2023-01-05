@@ -1,10 +1,10 @@
 package com.orghaniian.pokedex.ui.utils
 
 import com.orghaniian.pokedex.R
-import com.orghaniian.pokedex.data.model.Color
+import com.orghaniian.data.model.Color
 
-fun Color.getColorResource(): Int {
-    return when (this) {
+val Color.colorResourceID: Int
+    get() = when (this) {
         Color.BLACK -> R.color.black
         Color.BLUE -> R.color.blue
         Color.BROWN -> R.color.brown
@@ -16,4 +16,3 @@ fun Color.getColorResource(): Int {
         Color.WHITE -> R.color.white
         Color.YELLOW -> R.color.yellow
     }
-}
