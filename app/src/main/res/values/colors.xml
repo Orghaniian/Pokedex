@@ -1,10 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="seed">#6A77DA</color>
+    <color name="md_theme_light_primary">#4855B6</color>
+    <color name="md_theme_light_onPrimary">#FFFFFF</color>
+    <color name="md_theme_light_primaryContainer">#DFE0FF</color>
+    <color name="md_theme_light_onPrimaryContainer">#000B62</color>
+    <color name="md_theme_light_secondary">#3A6A1D</color>
+    <color name="md_theme_light_onSecondary">#FFFFFF</color>
+    <color name="md_theme_light_secondaryContainer">#BAF295</color>
+    <color name="md_theme_light_onSecondaryContainer">#092100</color>
+    <color name="md_theme_light_tertiary">#9A4522</color>
+    <color name="md_theme_light_onTertiary">#FFFFFF</color>
+    <color name="md_theme_light_tertiaryContainer">#FFDBCE</color>
+    <color name="md_theme_light_onTertiaryContainer">#380D00</color>
+    <color name="md_theme_light_error">#BA1A1A</color>
+    <color name="md_theme_light_errorContainer">#FFDAD6</color>
+    <color name="md_theme_light_onError">#FFFFFF</color>
+    <color name="md_theme_light_onErrorContainer">#410002</color>
+    <color name="md_theme_light_background">#F6FEFF</color>
+    <color name="md_theme_light_onBackground">#001F24</color>
+    <color name="md_theme_light_surface">#F6FEFF</color>
+    <color name="md_theme_light_onSurface">#001F24</color>
+    <color name="md_theme_light_surfaceVariant">#E3E1EC</color>
+    <color name="md_theme_light_onSurfaceVariant">#46464F</color>
+    <color name="md_theme_light_outline">#777680</color>
+    <color name="md_theme_light_inverseOnSurface">#D0F8FF</color>
+    <color name="md_theme_light_inverseSurface">#00363D</color>
+    <color name="md_theme_light_inversePrimary">#BCC2FF</color>
+    <color name="md_theme_light_shadow">#000000</color>
+    <color name="md_theme_light_surfaceTint">#4855B6</color>
+    <color name="md_theme_light_surfaceTintColor">#4855B6</color>
+    <color name="md_theme_dark_primary">#BCC2FF</color>
+    <color name="md_theme_dark_onPrimary">#132286</color>
+    <color name="md_theme_dark_primaryContainer">#2F3C9D</color>
+    <color name="md_theme_dark_onPrimaryContainer">#DFE0FF</color>
+    <color name="md_theme_dark_secondary">#9FD67B</color>
+    <color name="md_theme_dark_onSecondary">#153800</color>
+    <color name="md_theme_dark_secondaryContainer">#235104</color>
+    <color name="md_theme_dark_onSecondaryContainer">#BAF295</color>
+    <color name="md_theme_dark_tertiary">#FFB59A</color>
+    <color name="md_theme_dark_onTertiary">#5B1B00</color>
+    <color name="md_theme_dark_tertiaryContainer">#7B2E0C</color>
+    <color name="md_theme_dark_onTertiaryContainer">#FFDBCE</color>
+    <color name="md_theme_dark_error">#FFB4AB</color>
+    <color name="md_theme_dark_errorContainer">#93000A</color>
+    <color name="md_theme_dark_onError">#690005</color>
+    <color name="md_theme_dark_onErrorContainer">#FFDAD6</color>
+    <color name="md_theme_dark_background">#001F24</color>
+    <color name="md_theme_dark_onBackground">#97F0FF</color>
+    <color name="md_theme_dark_surface">#001F24</color>
+    <color name="md_theme_dark_onSurface">#97F0FF</color>
+    <color name="md_theme_dark_surfaceVariant">#46464F</color>
+    <color name="md_theme_dark_onSurfaceVariant">#C7C5D0</color>
+    <color name="md_theme_dark_outline">#90909A</color>
+    <color name="md_theme_dark_inverseOnSurface">#001F24</color>
+    <color name="md_theme_dark_inverseSurface">#97F0FF</color>
+    <color name="md_theme_dark_inversePrimary">#4855B6</color>
+    <color name="md_theme_dark_shadow">#000000</color>
+    <color name="md_theme_dark_surfaceTint">#BCC2FF</color>
+    <color name="md_theme_dark_surfaceTintColor">#BCC2FF</color>
+
+<!--  Pokemons background color  -->
+    <color name="green">#46D1B1</color>
+    <color name="yellow">#FFCF4A</color>
+    <color name="red">#FB6C6C</color>
+    <color name="blue">#77BEFE</color>
+    <color name="brown">#B2746C</color>
+    <color name="purple">#7D528D</color>
+    <color name="white">#C2C2C2</color>
+    <color name="pink">#ff88dc</color>
+    <color name="gray">#72727E</color>
+    <color name="black">#272727</color>
+
+
+    <color name="on_type">#FFFFFF</color>
+    <color name="on_type_variant">#42000000</color>
 </resources>

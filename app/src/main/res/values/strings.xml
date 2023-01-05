@@ -1,3 +1,30 @@
 <resources>
-    <string name="app_name">Pokédex</string>
+    <string name="app_name" translatable="false">Pokédex</string>
+    <string name="pokemon_list_fragment_label" translatable="false">Pokédex</string>
+    <string name="pokemon_image_content_description">Illustration of %1$s</string>
+    <string name="pokemon_type_image_content_description">Type %1$s</string>
+    <string name="about_name">About</string>
+    <string name="base_stats_name">Base Stats</string>
+    <string name="evolution_name">Evolution</string>
+    <string name="moves_name">Moves</string>
+    <string name="type_normal">normal</string>
+    <string name="type_fighting">fighting</string>
+    <string name="type_flying">flying</string>
+    <string name="type_poison">poison</string>
+    <string name="type_ground">ground</string>
+    <string name="type_rock">rock</string>
+    <string name="type_bug">bug</string>
+    <string name="type_ghost">ghost</string>
+    <string name="type_steel">steel</string>
+    <string name="type_fire">fire</string>
+    <string name="type_water">water</string>
+    <string name="type_grass">grass</string>
+    <string name="type_electric">electric</string>
+    <string name="type_psychic">psychic</string>
+    <string name="type_ice">ice</string>
+    <string name="type_dragon">dragon</string>
+    <string name="type_dark">dark</string>
+    <string name="type_fairy">fairy</string>
+    <string name="type_unknown">unknown</string>
+    <string name="type_shadow">shadow</string>
 </resources>

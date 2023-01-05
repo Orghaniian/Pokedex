@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pokemon_image_content_description">Illustration de %1$s</string>
+    <string name="pokemon_type_image_content_description">Type %1$s</string>
+    <string name="about_name">À propos</string>
+    <string name="base_stats_name">Statistiques</string>
+    <string name="evolution_name">Évolution</string>
+    <string name="moves_name">Attaques</string>
+    <string name="type_normal">normal</string>
+    <string name="type_fighting">combat</string>
+    <string name="type_flying">vol</string>
+    <string name="type_poison">poison</string>
+    <string name="type_ground">sol</string>
+    <string name="type_rock">roche</string>
+    <string name="type_bug">insecte</string>
+    <string name="type_ghost">spectre</string>
+    <string name="type_steel">acier</string>
+    <string name="type_fire">feu</string>
+    <string name="type_water">eau</string>
+    <string name="type_grass">plante</string>
+    <string name="type_electric">électrik</string>
+    <string name="type_psychic">psy</string>
+    <string name="type_ice">glace</string>
+    <string name="type_dragon">dragon</string>
+    <string name="type_dark">ténèbres</string>
+    <string name="type_fairy">fée</string>
+    <string name="type_unknown">inconnu</string>
+    <string name="type_shadow">ombre</string>
+</resources>

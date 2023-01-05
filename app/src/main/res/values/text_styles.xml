@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="TextAppearance.Pokédex.HeadlineLarge" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="fontFamily">@font/public_sans_medium</item>
+    </style>
+    <style name="TextAppearance.Pokédex.HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="fontFamily">@font/public_sans_regular</item>
+    </style>
+    <style name="TextAppearance.Pokédex.HeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="fontFamily">@font/public_sans_regular</item>
+    </style>
+
+    <style name="TextAppearance.Pokédex.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="fontFamily">@font/public_sans_regular</item>
+    </style>
+    <style name="TextAppearance.Pokédex.TitleMedium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="fontFamily">@font/public_sans_medium</item>
+    </style>
+    <style name="TextAppearance.Pokédex.TitleSmall" parent="TextAppearance.Material3.TitleSmall">
+        <item name="fontFamily">@font/public_sans_medium</item>
+    </style>
+
+    <style name="TextAppearance.Pokédex.DisplayLarge" parent="TextAppearance.Material3.DisplayLarge">
+        <item name="fontFamily">@font/public_sans_regular</item>
+    </style>
+    <style name="TextAppearance.Pokédex.DisplayMedium" parent="TextAppearance.Material3.DisplayMedium">
+        <item name="fontFamily">@font/public_sans_regular</item>
+    </style>
+    <style name="TextAppearance.Pokédex.DisplaySmall" parent="TextAppearance.Material3.DisplaySmall">
+        <item name="fontFamily">@font/public_sans_regular</item>
+    </style>
+
+    <style name="TextAppearance.Pokédex.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
+        <item name="fontFamily">@font/public_sans_regular</item>
+    </style>
+    <style name="TextAppearance.Pokédex.BodyMedium" parent="TextAppearance.Material3.BodyMedium">
+        <item name="fontFamily">@font/public_sans_regular</item>
+    </style>
+    <style name="TextAppearance.Pokédex.BodySmall" parent="TextAppearance.Material3.BodySmall">
+        <item name="fontFamily">@font/public_sans_regular</item>
+    </style>
+
+    <style name="TextAppearance.Pokédex.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="fontFamily">@font/public_sans_semibold</item>
+    </style>
+    <style name="TextAppearance.Pokédex.LabelMedium" parent="TextAppearance.Material3.LabelMedium">
+        <item name="fontFamily">@font/public_sans_medium</item>
+    </style>
+    <style name="TextAppearance.Pokédex.LabelSmall" parent="TextAppearance.Material3.LabelSmall">
+        <item name="fontFamily">@font/public_sans_medium</item>
+    </style>
+
+
+
+</resources>
