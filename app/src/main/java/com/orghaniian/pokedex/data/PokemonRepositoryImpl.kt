@@ -6,7 +6,6 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.orghaniian.pokedex.data.local.Pokemon
-import com.orghaniian.pokedex.data.local.PokemonDetails
 import com.orghaniian.pokedex.data.local.PokemonLocalDataSource
 import com.orghaniian.pokedex.data.paging.PokemonRemoteMediator
 import com.orghaniian.pokedex.data.remote.PokemonRemoteDataSource
@@ -34,10 +33,10 @@ class PokemonRepositoryImpl @Inject constructor(
         }.flow
     }
 
-    override suspend fun getPokemonDetails(order: Int): PokemonDetails {
-        var pokemonDetails = pokemonLocalDataSource.getPokemonDetails(order)
+    override suspend fun getPokemon(order: Int, locales: LocaleListCompat): Pokemon {
+        var pokemonDetails = pokemonLocalDataSource.getPokemon(order)
         if (pokemonDetails == null) {
-            pokemonDetails = pokemonRemoteDataSource.getPokemonDetails(order)
+            pokemonDetails = pokemonRemoteDataSource.getPokemon(locales, order)
             CoroutineScope(Dispatchers.IO).launch {
                 pokemonLocalDataSource.insert(pokemonDetails)
             }

@@ -12,5 +12,8 @@ data class Pokemon(
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "types") val types: List<Type>,
     @ColumnInfo(name = "color") val color: Color,
-    @ColumnInfo(name = "sprite_url") val spriteUrl: String = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/$order.png"
+    @ColumnInfo(name = "sprite_url") val spriteUrl: String = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/$order.png",
+    @ColumnInfo(name = "gender_rate") val genderRate: Float,
+    @ColumnInfo(name = "height") val height: Float,
+    @ColumnInfo(name = "weight") val weight: Float,
 )

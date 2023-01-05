@@ -11,8 +11,8 @@ class PokemonLocalDataSource @Inject constructor(
 
     fun getPagingSource() = pokemonDao.getPagingSource()
 
-    suspend fun getPokemonDetails(order: Int) = pokemonDao.getPokemonDetails(order)
+    suspend fun getPokemon(order: Int) = pokemonDao.getPokemon(order)
 
-    fun insert(pokemon: PokemonDetails) = pokemonDao.insert(pokemon)
+    fun insert(pokemon: Pokemon) = pokemonDao.insert(pokemon)
 
 }

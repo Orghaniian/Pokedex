@@ -16,7 +16,7 @@ interface PokemonDao {
     fun insertAll(pokemons: List<Pokemon>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(pokemon: PokemonDetails)
+    fun insert(pokemon: Pokemon)
 
     @Query("SELECT COUNT(*) FROM pokemons")
     suspend fun getCount(): Int
@@ -24,6 +24,6 @@ interface PokemonDao {
     @Query("SELECT * FROM pokemons")
     fun getPagingSource(): PagingSource<Int, Pokemon>
 
-    @Query("SELECT * FROM pokemons_details WHERE pokedex_order=:order")
-    suspend fun getPokemonDetails(order: Int): PokemonDetails?
+    @Query("SELECT * FROM pokemons WHERE pokedex_order=:order")
+    suspend fun getPokemon(order: Int): Pokemon?
 }

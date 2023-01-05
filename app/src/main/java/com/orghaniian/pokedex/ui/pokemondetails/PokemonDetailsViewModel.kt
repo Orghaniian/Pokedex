@@ -1,10 +1,11 @@
 package com.orghaniian.pokedex.ui.pokemondetails
 
+import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.orghaniian.pokedex.data.PokemonRepository
-import com.orghaniian.pokedex.data.local.PokemonDetails
+import com.orghaniian.pokedex.data.local.Pokemon
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -24,11 +25,11 @@ class PokemonDetailsViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             val order = PokemonDetailsFragmentArgs.fromSavedStateHandle(savedStateHandle).order
-            _uiState.emit(repository.getPokemonDetails(order).toPokemonDetailsUiState())
+            _uiState.emit(repository.getPokemon(order, LocaleListCompat.getAdjustedDefault()).toPokemonDetailsUiState())
         }
     }
 
-    private fun PokemonDetails.toPokemonDetailsUiState(): PokemonDetailsUiState {
+    private fun Pokemon.toPokemonDetailsUiState(): PokemonDetailsUiState {
         return PokemonDetailsUiState(
             name,
             order,
