@@ -70,13 +70,8 @@ class PokemonDetailsFragment : Fragment() {
         binding.viewPager.adapter = PokemonDetailsStateAdapter(this@PokemonDetailsFragment)
 
         TabLayoutMediator(binding.tabBar, binding.viewPager) { tab, position ->
-            tab.text = when(position) {
-                0 -> getString(R.string.about_name)
-                1 -> getString(R.string.base_stats_name)
-                2 -> getString(R.string.evolution_name)
-                3 -> getString(R.string.moves_name)
-                else -> throw IndexOutOfBoundsException("There isn't a $position tab")
-            }
+            tab.text = TABS.getOrNull(position)?.let { getString(it.second) }
+                ?: throw IndexOutOfBoundsException("There isn't a $position tab")
         }.attach()
 
         return binding.root
@@ -122,19 +117,20 @@ class PokemonDetailsFragment : Fragment() {
 
     private inner class PokemonDetailsStateAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
-        override fun getItemCount(): Int = NUM_TABS
+        override fun getItemCount(): Int = TABS.size
 
-        override fun createFragment(position: Int): Fragment = when(position) {
-            0 -> AboutFragment()
-            1 -> BaseStatsFragment()
-            2 -> EvolutionFragment()
-            3 -> MovesFragment()
-            else -> throw IndexOutOfBoundsException("There isn't a $position tab")
-        }
+        override fun createFragment(position: Int): Fragment =
+            TABS[position].first.constructors.firstOrNull()?.call()
+                ?: throw IndexOutOfBoundsException("There isn't a $position tab")
     }
 
     companion object {
-        private const val NUM_TABS = 4
+        private val TABS = listOf(
+            AboutFragment::class to R.string.about_name,
+            BaseStatsFragment::class to R.string.base_stats_name,
+            EvolutionFragment::class to R.string.evolution_name,
+            MovesFragment::class to R.string.moves_name
+        )
     }
 }
 
