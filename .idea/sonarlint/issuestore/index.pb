@@ -50,8 +50,6 @@ i
 Mapp/src/main/java/com/orghaniian/pokedex/data/paging/PokemonRemoteMediator.kt,2/1/218da943be12a269c30b9bbf281a6ef85209ae83
 }
 Mapp/src/main/java/com/orghaniian/pokedex/ui/pokemonlist/PokemonListUiState.kt,d/0/d0c69d033f44dc211274ad6c452dc218a4135728
-k
-;app/src/main/java/com/orghaniian/pokedex/data/model/Type.kt,7/f/7f1b14ad6f9db545682ee21b4f6548e669a392da
 s
 Capp/src/main/java/com/orghaniian/pokedex/ui/utils/ColorExtension.kt,8/0/806c540259fc214b543913904393fca27471060c
 v
@@ -66,8 +64,6 @@ Iapp/src/main/java/com/orghaniian/pokedex/data/remote/model/APIResource.kt,f/6/
 Napp/src/main/java/com/orghaniian/pokedex/data/remote/model/NamedAPIResource.kt,4/a/4a665159d35b1a5d0142a37b741247c0abf98dc1
 ‰
 Yapp/src/main/java/com/orghaniian/pokedex/ui/pokemondetails/basestats/BaseStatsFragment.kt,d/0/d031564b2be311303fed8818f9da647f68718905
-m
-=app/src/main/java/com/orghaniian/pokedex/ui/utils/Bindings.kt,9/d/9d03ecbd6fa7326d805611642585b13cfd959241
 ‰
 Yapp/src/main/java/com/orghaniian/pokedex/ui/pokemondetails/evolution/EvolutionFragment.kt,1/c/1c2d7e0730adfe548d1349518718805a137e97b9
 
@@ -76,16 +72,12 @@ Qapp/src/main/java/com/orghaniian/pokedex/ui/pokemondetails/moves/MovesFragment.
 Lapp/src/main/java/com/orghaniian/pokedex/data/remote/model/PokemonSpecies.kt,7\9\794af12102a90bee3991f3e3ba792967199fcc7d
 u
 Eapp/src/main/java/com/orghaniian/pokedex/data/remote/model/Pokemon.kt,0\d\0d341510e880090ecabb09f9175abea3d06a8073
-
-Oapp/src/main/java/com/orghaniian/pokedex/ui/pokemonlist/PokemonListViewModel.kt,2\0\20d5e3bcf9550c383558e51ce266de7d3df869b0
 
 Qapp/src/main/java/com/orghaniian/pokedex/ui/pokemondetails/about/AboutFragment.kt,5\8\58e1e6e9dbdf051089852b80872e56434422976f
 n
 >app/src/main/java/com/orghaniian/pokedex/data/local/Pokemon.kt,2\2\223644ff192a5ba865b69cccc2d82da62c0196fc
 q
 Aapp/src/main/java/com/orghaniian/pokedex/data/local/PokemonDao.kt,b\6\b6d169a476c4e578ba33825ee6d516dfa8eb1095
-…
-Uapp/src/main/java/com/orghaniian/pokedex/ui/pokemondetails/PokemonDetailsViewModel.kt,8\2\820efe54d7644664ad59525bbffaba270712cd7d
 }
 Mapp/src/main/java/com/orghaniian/pokedex/data/local/PokemonLocalDataSource.kt,4\6\4603bc3d233400f335fc3a81b11d6e218529b4f7
 
