@@ -9,7 +9,9 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -60,13 +62,18 @@ class PokemonListAdapter(
                 .load(item.spriteUrl)
                 .into(spriteImageView)
 
+            ViewCompat.setTransitionName(spriteImageView, "item_image")
+
             itemView.setOnClickListener {
                 val action = PokemonListFragmentDirections
                     .actionPokemonListFragmentToPokemonDetailsFragment(
                         item.order, formatNameUseCase(item.name)
                     )
-                it.findNavController().navigate(action)
+                val extras = FragmentNavigatorExtras(itemView to "container")
+                it.findNavController().navigate(action, extras)
             }
+
+            itemView.transitionName = "pokemon_${item.order}"
         }
     }
 

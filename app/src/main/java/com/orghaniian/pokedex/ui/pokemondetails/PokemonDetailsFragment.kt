@@ -1,9 +1,11 @@
 package com.orghaniian.pokedex.ui.pokemondetails
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -11,7 +13,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.bumptech.glide.Glide
+import com.google.android.material.color.MaterialColors
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.android.material.transition.MaterialContainerTransform
 import com.orghaniian.pokedex.databinding.FragmentPokemonDetailsBinding
 import com.orghaniian.pokedex.domain.FormatNameUseCase
 import com.orghaniian.pokedex.domain.FormatOrderUseCase
@@ -42,6 +46,20 @@ class PokemonDetailsFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedElementEnterTransition = MaterialContainerTransform().apply {
+            setAllContainerColors(
+                MaterialColors.getColor(
+                    requireContext(),
+                    android.R.attr.colorBackground,
+                    Color.TRANSPARENT
+                )
+            )
+            scrimColor = Color.TRANSPARENT
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -60,15 +78,25 @@ class PokemonDetailsFragment : Fragment() {
             }
         }.attach()
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        view.transitionName = "container"
+        postponeEnterTransition()
+
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collectLatest { uiState ->
+                    (view.parent as? ViewGroup)?.doOnPreDraw {
+                        startPostponedEnterTransition()
+                    }
                     uiState?.let { binding.bindUIState(it) }
                 }
             }
         }
-
-        return binding.root
     }
 
     override fun onDestroyView() {
@@ -88,6 +116,7 @@ class PokemonDetailsFragment : Fragment() {
         Glide.with(root)
             .load(uiState.spriteUrl)
             .into(sprite)
+
     }
 
     private inner class PokemonDetailsStateAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {

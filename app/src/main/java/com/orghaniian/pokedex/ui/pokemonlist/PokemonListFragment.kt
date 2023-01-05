@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -37,25 +38,37 @@ class PokemonListFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private val pokemonListAdapter: PokemonListAdapter by lazy {
+        PokemonListAdapter(formatOrderUseCase, formatNameUseCase)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentPokemonListBinding.inflate(inflater, container, false)
 
-        val pokemonListAdapter = PokemonListAdapter(formatOrderUseCase, formatNameUseCase)
-
         binding.bindAdapter(pokemonListAdapter)
+
+        (view as? ViewGroup)?.isTransitionGroup = true
+        postponeEnterTransition()
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.pagingData.collectLatest { pagingData ->
+                    (view.parent as? ViewGroup)?.doOnPreDraw {
+                        startPostponedEnterTransition()
+                    }
                     pokemonListAdapter.submitData(pagingData)
                 }
             }
         }
-
-        return binding.root
     }
 
     override fun onDestroyView() {
