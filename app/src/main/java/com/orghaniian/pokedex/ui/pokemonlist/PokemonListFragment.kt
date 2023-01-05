@@ -12,8 +12,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import com.orghaniian.pokedex.databinding.FragmentPokemonListBinding
-import com.orghaniian.pokedex.domain.FormatNameUseCase
-import com.orghaniian.pokedex.domain.FormatOrderUseCase
+import com.orghaniian.domain.FormatNameUseCase
+import com.orghaniian.domain.FormatOrderUseCase
 import com.orghaniian.pokedex.ui.utils.GridSpacingItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest

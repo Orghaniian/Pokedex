@@ -1,4 +1,4 @@
-package com.orghaniian.pokedex.domain
+package com.orghaniian.domain
 
 import java.util.*
 import javax.inject.Inject

@@ -18,8 +18,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.google.android.material.transition.MaterialContainerTransform
 import com.orghaniian.pokedex.R
 import com.orghaniian.pokedex.databinding.FragmentPokemonDetailsBinding
-import com.orghaniian.pokedex.domain.FormatNameUseCase
-import com.orghaniian.pokedex.domain.FormatOrderUseCase
+import com.orghaniian.domain.FormatNameUseCase
+import com.orghaniian.domain.FormatOrderUseCase
 import com.orghaniian.pokedex.ui.pokemondetails.about.AboutFragment
 import com.orghaniian.pokedex.ui.pokemondetails.basestats.BaseStatsFragment
 import com.orghaniian.pokedex.ui.pokemondetails.evolution.EvolutionFragment

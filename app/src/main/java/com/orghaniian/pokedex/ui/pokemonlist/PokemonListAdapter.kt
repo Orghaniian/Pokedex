@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.orghaniian.pokedex.R
-import com.orghaniian.pokedex.domain.FormatNameUseCase
-import com.orghaniian.pokedex.domain.FormatOrderUseCase
+import com.orghaniian.domain.FormatNameUseCase
+import com.orghaniian.domain.FormatOrderUseCase
 import com.orghaniian.pokedex.ui.utils.bindType
 import com.orghaniian.pokedex.ui.utils.colorResourceID
 

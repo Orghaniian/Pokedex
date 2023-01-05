@@ -20,8 +20,6 @@ M
 gradlew.bat,2/a/2a45a911a8f1836b0b6c5b758962572012d8f8c3
 P
  app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
-x
-Happ/src/test/java/com/orghaniian/pokedex/domain/FormatNameUseCaseTest.kt,3/c/3c5887ef0b37d1407a5b5a4f5469ba4cd05d8c51
 k
 ;app/src/main/java/com/orghaniian/pokedex/MainApplication.kt,d/f/dff8da9522e1c7af0144b01db2e1261ab8b7de21
 h
@@ -54,8 +52,6 @@ Qapp/src/main/java/com/orghaniian/pokedex/ui/pokemondetails/moves/MovesFragment.
 Lapp/src/main/java/com/orghaniian/pokedex/data/remote/model/PokemonSpecies.kt,7\9\794af12102a90bee3991f3e3ba792967199fcc7d
 u
 Eapp/src/main/java/com/orghaniian/pokedex/data/remote/model/Pokemon.kt,0\d\0d341510e880090ecabb09f9175abea3d06a8073
-
-Qapp/src/main/java/com/orghaniian/pokedex/ui/pokemondetails/about/AboutFragment.kt,5\8\58e1e6e9dbdf051089852b80872e56434422976f
 n
 >app/src/main/java/com/orghaniian/pokedex/data/local/Pokemon.kt,2\2\223644ff192a5ba865b69cccc2d82da62c0196fc
 q

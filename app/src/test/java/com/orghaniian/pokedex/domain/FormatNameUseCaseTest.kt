@@ -5,7 +5,7 @@ import org.junit.Test
 
 
 internal class FormatNameUseCaseTest {
-    private val formatNameUseCase = FormatNameUseCase()
+    private val formatNameUseCase = com.orghaniian.domain.FormatNameUseCase()
 
     @Test
     operator fun invoke() {
