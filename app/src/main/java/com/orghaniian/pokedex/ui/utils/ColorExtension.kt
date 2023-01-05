@@ -1,7 +1,7 @@
 package com.orghaniian.pokedex.ui.utils
 
 import com.orghaniian.pokedex.R
-import com.orghaniian.pokedex.data.model.Color
+import com.orghaniian.data.model.Color
 
 val Color.colorResourceID: Int
     get() = when (this) {

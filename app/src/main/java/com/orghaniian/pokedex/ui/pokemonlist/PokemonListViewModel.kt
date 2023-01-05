@@ -7,8 +7,8 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import androidx.paging.map
-import com.orghaniian.pokedex.data.PokemonRepository
-import com.orghaniian.pokedex.data.local.Pokemon
+import com.orghaniian.data.PokemonRepository
+import com.orghaniian.data.local.Pokemon
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

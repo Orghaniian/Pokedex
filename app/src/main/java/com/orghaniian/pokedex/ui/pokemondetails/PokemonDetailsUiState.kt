@@ -1,7 +1,7 @@
 package com.orghaniian.pokedex.ui.pokemondetails
 
-import com.orghaniian.pokedex.data.model.Color
-import com.orghaniian.pokedex.data.model.Type
+import com.orghaniian.data.model.Color
+import com.orghaniian.data.model.Type
 
 data class PokemonDetailsUiState(
     val name: String,

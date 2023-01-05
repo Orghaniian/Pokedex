@@ -4,8 +4,8 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
 import com.orghaniian.pokedex.R
-import com.orghaniian.pokedex.data.model.Type
-import com.orghaniian.pokedex.data.model.Type.*
+import com.orghaniian.data.model.Type
+import com.orghaniian.data.model.Type.*
 
 fun Type.getIconDrawable(context: Context): Drawable? = when(this) {
     NORMAL -> R.drawable.normal

@@ -4,8 +4,8 @@ import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.orghaniian.pokedex.data.PokemonRepository
-import com.orghaniian.pokedex.data.local.Pokemon
+import com.orghaniian.data.PokemonRepository
+import com.orghaniian.data.local.Pokemon
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
