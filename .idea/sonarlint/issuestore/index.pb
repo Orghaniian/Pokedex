@@ -1,6 +1,4 @@
 
-k
-;app/src/test/java/com/orghaniian/pokedex/ExampleUnitTest.kt,6/b/6bda1d3ed00d1063cb05b5c3a1ae4018712218fa
 z
 Japp/src/androidTest/java/com/orghaniian/pokedex/ExampleInstrumentedTest.kt,9\7\97c80472b359bf509dacd786374ed7d5fead157e
 >
@@ -20,14 +18,10 @@ M
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 ;
 gradlew.bat,2/a/2a45a911a8f1836b0b6c5b758962572012d8f8c3
-l
-<app/src/main/java/com/orghaniian/pokedex/data/model/Color.kt,f/c/fce7662696b266eea441714876014a3be4e8acbd
 P
  app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
 x
 Happ/src/test/java/com/orghaniian/pokedex/domain/FormatNameUseCaseTest.kt,3/c/3c5887ef0b37d1407a5b5a4f5469ba4cd05d8c51
-y
-Iapp/src/test/java/com/orghaniian/pokedex/domain/FormatOrderUseCaseTest.kt,7/1/7143ebc156bc70e38786b8d2b39c69b283382d0d
 k
 ;app/src/main/java/com/orghaniian/pokedex/MainApplication.kt,d/f/dff8da9522e1c7af0144b01db2e1261ab8b7de21
 o
@@ -50,8 +44,6 @@ i
 Mapp/src/main/java/com/orghaniian/pokedex/data/paging/PokemonRemoteMediator.kt,2/1/218da943be12a269c30b9bbf281a6ef85209ae83
 }
 Mapp/src/main/java/com/orghaniian/pokedex/ui/pokemonlist/PokemonListUiState.kt,d/0/d0c69d033f44dc211274ad6c452dc218a4135728
-s
-Capp/src/main/java/com/orghaniian/pokedex/ui/utils/ColorExtension.kt,8/0/806c540259fc214b543913904393fca27471060c
 v
 Fapp/src/main/java/com/orghaniian/pokedex/data/remote/PokeApiService.kt,5/8/58a89aca6e754a7eb162d191b867160886054c5b
 ‚

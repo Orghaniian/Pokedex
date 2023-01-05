@@ -25,7 +25,7 @@ import com.orghaniian.pokedex.ui.pokemondetails.basestats.BaseStatsFragment
 import com.orghaniian.pokedex.ui.pokemondetails.evolution.EvolutionFragment
 import com.orghaniian.pokedex.ui.pokemondetails.moves.MovesFragment
 import com.orghaniian.pokedex.ui.utils.bindType
-import com.orghaniian.pokedex.ui.utils.getColorResource
+import com.orghaniian.pokedex.ui.utils.colorResourceID
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -101,7 +101,7 @@ class PokemonDetailsFragment : Fragment() {
     }
 
     private fun FragmentPokemonDetailsBinding.bindUIState(uiState: PokemonDetailsUiState) {
-        root.setBackgroundResource(uiState.color.getColorResource())
+        root.setBackgroundResource(uiState.color.colorResourceID)
 
         name.text = formatNameUseCase(uiState.name)
         order.text = formatOrderUseCase(uiState.order)

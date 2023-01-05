@@ -20,7 +20,7 @@ import com.orghaniian.pokedex.R
 import com.orghaniian.pokedex.domain.FormatNameUseCase
 import com.orghaniian.pokedex.domain.FormatOrderUseCase
 import com.orghaniian.pokedex.ui.utils.bindType
-import com.orghaniian.pokedex.ui.utils.getColorResource
+import com.orghaniian.pokedex.ui.utils.colorResourceID
 
 class PokemonListAdapter(
     private val formatOrderUseCase: FormatOrderUseCase,
@@ -44,7 +44,7 @@ class PokemonListAdapter(
 
             (view.background as LayerDrawable).run {
                 findDrawableByLayerId(R.id.card)
-                    .setTint(ContextCompat.getColor(context, item.color.getColorResource()))
+                    .setTint(ContextCompat.getColor(context, item.color.colorResourceID))
                 findDrawableByLayerId(R.id.pokeball)
                     .setTint(0x4CFFFFFF)
             }
