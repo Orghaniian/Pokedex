@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.color.MaterialColors
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.android.material.transition.MaterialContainerTransform
+import com.orghaniian.pokedex.R
 import com.orghaniian.pokedex.databinding.FragmentPokemonDetailsBinding
 import com.orghaniian.pokedex.domain.FormatNameUseCase
 import com.orghaniian.pokedex.domain.FormatOrderUseCase
@@ -70,10 +71,10 @@ class PokemonDetailsFragment : Fragment() {
 
         TabLayoutMediator(binding.tabBar, binding.viewPager) { tab, position ->
             tab.text = when(position) {
-                0 -> "About"
-                1 -> "Base Stats"
-                2 -> "Evolution"
-                3 -> "Moves"
+                0 -> getString(R.string.about_name)
+                1 -> getString(R.string.base_stats_name)
+                2 -> getString(R.string.evolution_name)
+                3 -> getString(R.string.moves_name)
                 else -> throw IndexOutOfBoundsException("There isn't a $position tab")
             }
         }.attach()

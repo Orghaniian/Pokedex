@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pokemon_image_content_description">Illustration de %1$s</string>
+    <string name="pokemon_type_image_content_description">Type %1$s</string>
+    <string name="about_name">À propos</string>
+    <string name="base_stats_name">Statistiques</string>
+    <string name="evolution_name">Évolution</string>
+    <string name="moves_name">Attaques</string>
+</resources>

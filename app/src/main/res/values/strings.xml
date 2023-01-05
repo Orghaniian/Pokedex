@@ -1,6 +1,10 @@
 <resources>
-    <string name="app_name">Pokédex</string>
-    <string name="pokemon_list_fragment_label">Pokédex</string>
-    <string name="pokemon_image_content_description">Illustration de %1$s</string>
+    <string name="app_name" translatable="false">Pokédex</string>
+    <string name="pokemon_list_fragment_label" translatable="false">Pokédex</string>
+    <string name="pokemon_image_content_description">Illustration of %1$s</string>
     <string name="pokemon_type_image_content_description">Type %1$s</string>
+    <string name="about_name">About</string>
+    <string name="base_stats_name">Base Stats</string>
+    <string name="evolution_name">Evolution</string>
+    <string name="moves_name">Moves</string>
 </resources>
