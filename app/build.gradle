@@ -36,7 +36,12 @@ android {
     }
     buildFeatures {
         viewBinding true
+        compose true
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.3.2"
+    }
+
 }
 
 dependencies {
@@ -60,6 +65,14 @@ dependencies {
     testImplementation libs.org.jetbrains.kotlinx.coroutines.test
 
     implementation libs.org.jetbrains.kotlin.reflect
+
+    implementation libs.androidx.compose.runtime
+    implementation libs.androidx.compose.ui
+    implementation libs.androidx.compose.ui.tooling
+    implementation libs.androidx.compose.foundation
+    implementation libs.androidx.compose.foundation.layout
+    implementation libs.androidx.compose.material
+    implementation libs.com.google.accompanist.themeadapter.material3
 }
 
 // Allow references to generated code

@@ -4,17 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.material.MaterialTheme
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.recyclerview.widget.GridLayoutManager
 import com.orghaniian.pokedex.databinding.FragmentPokemonListBinding
 import com.orghaniian.domain.FormatNameUseCase
 import com.orghaniian.domain.FormatOrderUseCase
-import com.orghaniian.pokedex.ui.utils.GridSpacingItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -38,9 +37,9 @@ class PokemonListFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private val pokemonListAdapter: PokemonListAdapter by lazy {
-        PokemonListAdapter(formatOrderUseCase, formatNameUseCase)
-    }
+//    private val pokemonListAdapter: PokemonListAdapter by lazy {
+//        PokemonListAdapter(formatOrderUseCase, formatNameUseCase)
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,7 +47,17 @@ class PokemonListFragment : Fragment() {
     ): View {
         _binding = FragmentPokemonListBinding.inflate(inflater, container, false)
 
-        binding.bindAdapter(pokemonListAdapter)
+//        binding.bindAdapter(pokemonListAdapter)
+
+        binding.composeView.setContent {
+            MaterialTheme {
+//                LazyVerticalGrid(
+//                    columns = GridCells.Adaptive(minSize = 128.dp)
+//                ) {
+//                    items(viewModel.pagingData.)
+//                }
+            }
+        }
 
         (view as? ViewGroup)?.isTransitionGroup = true
         postponeEnterTransition()
@@ -65,7 +74,7 @@ class PokemonListFragment : Fragment() {
                     (view.parent as? ViewGroup)?.doOnPreDraw {
                         startPostponedEnterTransition()
                     }
-                    pokemonListAdapter.submitData(pagingData)
+//                    pokemonListAdapter.submitData(pagingData)
                 }
             }
         }
@@ -77,8 +86,8 @@ class PokemonListFragment : Fragment() {
     }
 }
 
-private fun FragmentPokemonListBinding.bindAdapter(pokemonListAdapter: PokemonListAdapter) = with(pokemonList) {
-    adapter = pokemonListAdapter
-    layoutManager = GridLayoutManager(context, 2)
-    addItemDecoration(GridSpacingItemDecoration(context, 2, 8))
-}
+//private fun FragmentPokemonListBinding.bindAdapter(pokemonListAdapter: PokemonListAdapter) = with(pokemonList) {
+//    adapter = pokemonListAdapter
+//    layoutManager = GridLayoutManager(context, 2)
+//    addItemDecoration(GridSpacingItemDecoration(context, 2, 8))
+//}

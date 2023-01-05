@@ -7,12 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".ui.pokemonlist.PokemonListFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/pokemon_list"
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/compose_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/screen_padding"
-        android:clipToPadding="false"
-        />
+        android:layout_height="match_parent"/>
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/pokemon_list"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:padding="@dimen/screen_padding"-->
+<!--        android:clipToPadding="false"-->
+<!--        />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
