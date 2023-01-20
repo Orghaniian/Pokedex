@@ -1,8 +1,10 @@
 package com.orghaniian.pokedex.ui.utils
 
+import androidx.annotation.ColorRes
 import com.orghaniian.pokedex.R
 import com.orghaniian.data.model.Color
 
+@get:ColorRes
 val Color.colorResourceID: Int
     get() = when (this) {
         Color.BLACK -> R.color.black
