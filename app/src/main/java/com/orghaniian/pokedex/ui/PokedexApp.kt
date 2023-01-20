@@ -3,7 +3,7 @@ package com.orghaniian.pokedex.ui
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.orghaniian.pokedex.ui.pokemondetails.PokemonDetailsRoute
+import com.orghaniian.pokedex.ui.pokemondetails.PokemonDetails
 import com.orghaniian.pokedex.ui.pokedex.Pokedex
 
 @Composable
@@ -21,8 +21,14 @@ fun PokedexApp(
                 }
             )
         }
-        composable(Screen.Details.route) { _ ->
-            PokemonDetailsRoute()
+        composable(Screen.Details.route) {
+            PokemonDetails(
+                onBackPressed = {
+                    if(!appState.navController.popBackStack()) {
+                        appState.navController.navigate(Screen.Pokedex.route)
+                    }
+                }
+            )
         }
     }
 }

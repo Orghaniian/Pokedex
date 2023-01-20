@@ -31,4 +31,5 @@
     <string name="weightLabel">Weight</string>
     <string name="breedingLabel">Breeding</string>
     <string name="genderLabel">Gender</string>
+    <string name="back">Back</string>
 </resources>

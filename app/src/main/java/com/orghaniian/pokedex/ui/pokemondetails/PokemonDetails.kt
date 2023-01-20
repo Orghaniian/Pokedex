@@ -20,6 +20,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.orghaniian.data.model.Type
 import com.orghaniian.pokedex.R
+import com.orghaniian.pokedex.ui.components.ReturnButton
 import com.orghaniian.pokedex.ui.components.TypeChip
 import com.orghaniian.pokedex.ui.pokemondetails.about.About
 import com.orghaniian.pokedex.ui.pokemondetails.basestats.BaseStats
@@ -29,98 +30,114 @@ import com.orghaniian.pokedex.ui.utils.colorResourceID
 import com.orghaniian.pokedex.ui.utils.formatOrder
 
 @Composable
-fun PokemonDetailsRoute(
-    viewModel: PokemonDetailsViewModel = hiltViewModel()
+fun PokemonDetails(
+    viewModel: PokemonDetailsViewModel = hiltViewModel(),
+    onBackPressed: (() -> Unit)? = null
 ) {
     val state by viewModel.uiState.collectAsState()
 
-    PokemonDetails(
+    PokemonDetailsContent(
         uiState = state,
-        onTabSelected = { viewModel.selectTab(it) }
+        onTabSelected = { viewModel.selectTab(it) },
+        onBackPressed = onBackPressed
     )
 }
 
 @Composable
-fun PokemonDetails(
+fun PokemonDetailsContent(
     uiState: PokemonDetailsUiState,
     onTabSelected: (PokemonDetailsUiState.Tab) -> Unit,
+    onBackPressed: (() -> Unit)? = null
 ) {
-    if (uiState.pokemon == null) {
-        CircularProgressIndicator()
-    } else {
-        val localDensity = LocalDensity.current
+    val localDensity = LocalDensity.current
 
-        Surface(
-            color = colorResource(uiState.pokemon.color.colorResourceID),
-            contentColor = colorResource(R.color.on_type)
+    Surface(
+        color = uiState.pokemon?.let{ colorResource(it.color.colorResourceID) }
+            ?: MaterialTheme.colorScheme.background,
+        contentColor = colorResource(R.color.on_type)
+    ) {
+        Column(
+            modifier = Modifier.statusBarsPadding()
         ) {
-            var imageHeight by remember {
-                mutableStateOf(0.dp)
+            if(onBackPressed != null) {
+                ReturnButton(
+                    modifier = Modifier.padding(dimensionResource(R.dimen.screen_padding)),
+                    onClick = onBackPressed
+                )
             }
-
-            Box {
-                var columnHeightDp by remember {
+            if(uiState.pokemon == null) {
+                CircularProgressIndicator()
+            } else {
+                var imageHeight by remember {
                     mutableStateOf(0.dp)
                 }
 
-                Column {
-                    Column(
-                        modifier = Modifier
-                            .padding(dimensionResource(R.dimen.screen_padding))
-                            .onGloballyPositioned { coordinates ->
-                                columnHeightDp =
-                                    with(localDensity) { coordinates.size.height.toDp() }
-                            }
-                    ) {
-                        Row(
-                            verticalAlignment = Alignment.Bottom,
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            Text(
-                                text = uiState.pokemon.name.capitalize(Locale.current),
-                                style = MaterialTheme.typography.headlineLarge
-                            )
-                            Text(
-                                text = formatOrder(uiState.pokemon.order),
-                                style = MaterialTheme.typography.labelLarge,
-                                color = colorResource(R.color.on_type)
-                            )
-                        }
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(
-                                dimensionResource(R.dimen.pokemon_list_item_types_spacing)
-                            ),
-                            modifier = Modifier.padding(dimensionResource(R.dimen.margin_m))
-                        ) {
-                            uiState.pokemon.types.forEach {
-                                TypeChip(it)
-                            }
-                        }
+                Box {
+                    var columnHeightDp by remember {
+                        mutableStateOf(0.dp)
                     }
-                    Spacer(modifier = Modifier.height(imageHeight * 3/5))
-                    DetailsTabs(
-                        uiState = uiState,
-                        onTabSelected = onTabSelected,
-                        padding = PaddingValues(top = imageHeight * 1/5)
+
+                    Column {
+                        Column(
+                            modifier = Modifier
+                                .padding(horizontal = dimensionResource(R.dimen.screen_padding))
+                                .onGloballyPositioned { coordinates ->
+                                    columnHeightDp =
+                                        with(localDensity) { coordinates.size.height.toDp() }
+                                }
+                        ) {
+                            Row(
+                                verticalAlignment = Alignment.Bottom,
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                modifier = Modifier.fillMaxWidth()
+                            ) {
+                                Text(
+                                    text = uiState.pokemon.name.capitalize(Locale.current),
+                                    style = MaterialTheme.typography.headlineLarge
+                                )
+                                Text(
+                                    text = formatOrder(uiState.pokemon.order),
+                                    style = MaterialTheme.typography.labelLarge,
+                                    color = colorResource(R.color.on_type)
+                                )
+                            }
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(
+                                    dimensionResource(R.dimen.pokemon_list_item_types_spacing)
+                                ),
+                                modifier = Modifier.padding(dimensionResource(R.dimen.margin_m))
+                            ) {
+                                uiState.pokemon.types.forEach {
+                                    TypeChip(it)
+                                }
+                            }
+                        }
+                        Spacer(modifier = Modifier.height(imageHeight * 3/5))
+                        DetailsTabs(
+                            uiState = uiState,
+                            onTabSelected = onTabSelected,
+                            padding = PaddingValues(top = imageHeight * 1/5)
+                        )
+                    }
+                    AsyncImage(
+                        model = uiState.pokemon.spriteUrl,
+                        contentDescription = stringResource(
+                            R.string.pokemon_image_content_description,
+                            uiState.pokemon.name
+                        ),
+                        modifier = Modifier
+                            .height((LocalConfiguration.current.screenHeightDp * .3).dp)
+                            .fillMaxWidth()
+                            .padding(top = columnHeightDp)
+                            .onGloballyPositioned { coordinates ->
+                                imageHeight = with(localDensity) { coordinates.size.height.toDp() }
+                            }
                     )
                 }
-                AsyncImage(
-                    model = uiState.pokemon.spriteUrl,
-                    contentDescription = stringResource(
-                        R.string.pokemon_image_content_description,
-                        uiState.pokemon.name
-                    ),
-                    modifier = Modifier
-                        .height((LocalConfiguration.current.screenHeightDp * .3).dp)
-                        .fillMaxWidth()
-                        .padding(top = columnHeightDp)
-                        .onGloballyPositioned { coordinates ->
-                            imageHeight = with(localDensity) { coordinates.size.height.toDp() }
-                        }
-                )
             }
         }
+
+
     }
 }
 
@@ -179,7 +196,7 @@ private fun PreviewPokemonDetails() {
     MaterialTheme{
         var currentTab by remember { mutableStateOf(PokemonDetailsUiState.Tab.About) }
 
-        PokemonDetails(
+        PokemonDetailsContent(
             uiState = PokemonDetailsUiState(
                 pokemon = PokemonDetailsUiState.Pokemon(
                     "Bulbizarre",
