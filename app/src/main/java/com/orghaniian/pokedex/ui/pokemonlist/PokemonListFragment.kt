@@ -4,17 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.dimensionResource
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.orghaniian.domain.FormatNameUseCase
 import com.orghaniian.domain.FormatOrderUseCase
-import com.orghaniian.pokedex.R
 import com.orghaniian.pokedex.databinding.FragmentPokemonListBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -56,7 +52,6 @@ class PokemonListFragment : Fragment() {
                             )
                         findNavController().navigate(action)
                     },
-                    modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.screen_padding))
                 )
             }
         }

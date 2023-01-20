@@ -2,8 +2,8 @@ package com.orghaniian.pokedex.ui.pokemonlist
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyGridScope
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -45,12 +45,14 @@ fun PokemonGrid(
 @Composable
 private fun CustomGrid(
     modifier: Modifier = Modifier,
+    contentPadding: PaddingValues = PaddingValues(16.dp),
     content: LazyGridScope.() -> Unit
 ) = LazyVerticalGrid(
     verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_m)),
     horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_m)),
     modifier = modifier,
     columns = GridCells.Adaptive(minSize = 128.dp),
+    contentPadding = contentPadding,
     content = content
 )
 
@@ -90,9 +92,7 @@ private fun PreviewCustomGrid() {
     }
     
     MaterialTheme {
-        CustomGrid(
-            modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.screen_padding))
-        ) {
+        CustomGrid{
             items(pokemons) {
                 PokemonCard(it, modifier = Modifier.height(100.dp))
             }
