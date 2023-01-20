@@ -112,7 +112,7 @@ fun PokemonDetailsContent(
                                 }
                             }
                         }
-                        Spacer(modifier = Modifier.height(imageHeight * 3/5))
+                        Spacer(modifier = Modifier.height(imageHeight * 4/5))
                         DetailsTabs(
                             uiState = uiState,
                             onTabSelected = onTabSelected,
