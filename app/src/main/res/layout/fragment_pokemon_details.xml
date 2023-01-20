@@ -1,92 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green"
-    android:clipToPadding="false"
     tools:context=".ui.pokemondetails.PokemonDetailsFragment">
 
-    <TextView
-        android:id="@+id/name"
-        style="@style/TextAppearance.Material3.HeadlineLarge"
-        android:textColor="@color/on_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/screen_padding"
-        android:layout_marginTop="@dimen/screen_padding"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/order"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/screen_padding"
-        style="@style/TextAppearance.Material3.LabelLarge"
-        android:textColor="@color/on_type"
-        app:layout_constraintBottom_toBottomOf="@id/name"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
-
-    <LinearLayout
-        android:id="@+id/types"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_m"
-        android:orientation="horizontal"
-        android:divider="@drawable/pokemon_list_item_type_divider"
-        android:showDividers="middle"
-        app:layout_constraintStart_toStartOf="@id/name"
-        app:layout_constraintTop_toBottomOf="@id/name">
-        <include android:id="@+id/type1" layout="@layout/type_chip"/>
-        <include android:id="@+id/type2" layout="@layout/type_chip"/>
-    </LinearLayout>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.35" />
-
-    <LinearLayout
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/compose_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline"
-        android:background="@drawable/drawer_background"
-        android:paddingTop="64dp"
-        android:orientation="vertical">
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/sprite"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/types"
-        app:layout_constraintWidth_percent="0.5"
-        android:paddingTop="48dp"
-        tools:ignore="ContentDescription" />
+        android:layout_height="match_parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

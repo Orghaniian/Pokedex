@@ -36,8 +36,6 @@ k
 data/.gitignore,d\1\d1977b1bb1b3e249de790289a11d8f31156df269
 Q
 !data/src/main/AndroidManifest.xml,f\a\fa20ad08e770fe0392ec3df5be8c6bde6c35d607
-r
-Bdata/src/main/java/com/orghaniian/data/remote/model/APIResource.kt,6\8\68c2d618965754a65eb4864935534131132ba6e3
 k
 ;data/src/main/java/com/orghaniian/data/local/AppDatabase.kt,f\5\f50553741c434bb062f0e00d1a9e4b4262214308
 e
@@ -50,8 +48,6 @@ w
 Gdata/src/main/java/com/orghaniian/data/remote/model/NamedAPIResource.kt,b\f\bfeaacc859c8c2c3a4ec17e484367a73cf6c152d
 {
 Kdata/src/main/java/com/orghaniian/data/remote/model/NamedAPIResourceList.kt,b\6\b6620d7bc60cc52994e7c7583ec149cc4893109b
-n
->data/src/main/java/com/orghaniian/data/remote/model/Pokemon.kt,3\3\33c5e639ec9feaab587f8e27ece50021e48e4567
 j
 :data/src/main/java/com/orghaniian/data/local/PokemonDao.kt,7\c\7ccec81df4ef759fdc011c1fb4624be106978f66
 v
@@ -68,14 +64,6 @@ d
 4data/src/main/java/com/orghaniian/data/model/Type.kt,5\d\5d2ec669dfc21cdd3f2fd6d5598d432623567c51
 G
 data/proguard-rules.pro,0\f\0fbb6d729d2f1271751b1eee2d01927256945f01
-É
-Sapp/src/main/java/com/orghaniian/pokedex/ui/pokemondetails/PokemonDetailsUiState.kt,e\2\e21c51670a0a37af868b60ae44b9ffe6823e3aed
-Ö
-Uapp/src/main/java/com/orghaniian/pokedex/ui/pokemondetails/PokemonDetailsViewModel.kt,8\2\820efe54d7644664ad59525bbffaba270712cd7d
-s
-Capp/src/main/java/com/orghaniian/pokedex/ui/utils/ColorExtension.kt,8\0\806c540259fc214b543913904393fca27471060c
-Å
-Qapp/src/main/java/com/orghaniian/pokedex/ui/pokemondetails/about/AboutFragment.kt,5\8\58e1e6e9dbdf051089852b80872e56434422976f
 ?
 settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
 I
@@ -86,8 +74,6 @@ x
 Happ/src/test/java/com/orghaniian/pokedex/domain/FormatNameUseCaseTest.kt,3\c\3c5887ef0b37d1407a5b5a4f5469ba4cd05d8c51
 y
 Iapp/src/test/java/com/orghaniian/pokedex/domain/FormatOrderUseCaseTest.kt,7\1\7143ebc156bc70e38786b8d2b39c69b283382d0d
-Ñ
-Tapp/src/main/java/com/orghaniian/pokedex/ui/pokemondetails/PokemonDetailsFragment.kt,1\d\1d2cd5c8ad5c3c63d43061ab54ea5df03dcb26b8
 S
 #domain/src/main/AndroidManifest.xml,4\6\46c5973a8a062650780ae254450fba029a8b5598
 o
@@ -98,5 +84,3 @@ k
 ;data/src/main/java/com/orghaniian/data/di/RetrofitModule.kt,e\c\ec558f6413d1ae823510a1bf032c2a6a6a5243db
 A
 data/build.gradle,7\2\72c2781d3d9ac8b82a3543f0fba5c796b2975232
-g
-7data/src/main/java/com/orghaniian/data/local/Pokemon.kt,b\a\ba2463eb7abaddc9302a39eaf798496d92cd9b05

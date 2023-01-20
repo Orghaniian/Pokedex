@@ -1,9 +1,6 @@
 package com.orghaniian.pokedex.ui.utils
 
-import android.content.Context
-import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes
-import androidx.core.content.ContextCompat
 import com.orghaniian.data.model.Type
 import com.orghaniian.data.model.Type.*
 import com.orghaniian.pokedex.R
@@ -30,10 +27,6 @@ fun Type.getIconResourceId(): Int = when(this) {
     FAIRY -> R.drawable.fairy
     UNKNOWN -> R.drawable.unknown
     SHADOW -> R.drawable.dark
-}
-
-fun Type.getIconDrawable(context: Context): Drawable? = getIconResourceId().let { drawableId ->
-    return ContextCompat.getDrawable(context, drawableId)
 }
 
 val Type.stringResourceID: Int

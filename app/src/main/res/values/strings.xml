@@ -27,4 +27,8 @@
     <string name="type_fairy">fairy</string>
     <string name="type_unknown">unknown</string>
     <string name="type_shadow">shadow</string>
+    <string name="heightLabel">Height</string>
+    <string name="weightLabel">Weight</string>
+    <string name="breedingLabel">Breeding</string>
+    <string name="genderLabel">Gender</string>
 </resources>
