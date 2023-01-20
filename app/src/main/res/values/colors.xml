@@ -74,6 +74,8 @@
     <color name="black">#272727</color>
 
 
+    <color name="type_chip_background">#4DFFFFFF</color>
+
     <color name="on_type">#FFFFFF</color>
     <color name="on_type_variant">#42000000</color>
 </resources>

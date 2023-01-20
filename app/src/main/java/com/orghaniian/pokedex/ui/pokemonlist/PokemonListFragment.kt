@@ -4,19 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.material.MaterialTheme
-import androidx.core.view.doOnPreDraw
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
-import com.orghaniian.pokedex.databinding.FragmentPokemonListBinding
+import androidx.navigation.fragment.findNavController
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.orghaniian.domain.FormatNameUseCase
 import com.orghaniian.domain.FormatOrderUseCase
+import com.orghaniian.pokedex.R
+import com.orghaniian.pokedex.databinding.FragmentPokemonListBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
@@ -37,25 +37,27 @@ class PokemonListFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-//    private val pokemonListAdapter: PokemonListAdapter by lazy {
-//        PokemonListAdapter(formatOrderUseCase, formatNameUseCase)
-//    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentPokemonListBinding.inflate(inflater, container, false)
 
-//        binding.bindAdapter(pokemonListAdapter)
-
         binding.composeView.setContent {
             MaterialTheme {
-//                LazyVerticalGrid(
-//                    columns = GridCells.Adaptive(minSize = 128.dp)
-//                ) {
-//                    items(viewModel.pagingData.)
-//                }
+                val pokemons = viewModel.pagingData.collectAsLazyPagingItems()
+
+                PokemonGrid(
+                    pokemons,
+                    onPokemonClick = { pokemon ->
+                        val action = PokemonListFragmentDirections
+                            .actionPokemonListFragmentToPokemonDetailsFragment(
+                                pokemon.order, formatNameUseCase(pokemon.name)
+                            )
+                        findNavController().navigate(action)
+                    },
+                    modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.screen_padding))
+                )
             }
         }
 
@@ -65,29 +67,8 @@ class PokemonListFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.pagingData.collectLatest { pagingData ->
-                    (view.parent as? ViewGroup)?.doOnPreDraw {
-                        startPostponedEnterTransition()
-                    }
-//                    pokemonListAdapter.submitData(pagingData)
-                }
-            }
-        }
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 }
-
-//private fun FragmentPokemonListBinding.bindAdapter(pokemonListAdapter: PokemonListAdapter) = with(pokemonList) {
-//    adapter = pokemonListAdapter
-//    layoutManager = GridLayoutManager(context, 2)
-//    addItemDecoration(GridSpacingItemDecoration(context, 2, 8))
-//}

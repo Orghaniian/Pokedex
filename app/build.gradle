@@ -39,7 +39,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.3.2"
+        kotlinCompilerExtensionVersion = "1.4.0"
     }
 
 }
@@ -72,7 +72,11 @@ dependencies {
     implementation libs.androidx.compose.foundation
     implementation libs.androidx.compose.foundation.layout
     implementation libs.androidx.compose.material
+    implementation libs.androidx.compose.paging
+    implementation libs.androidx.compose.constraintlayout
     implementation libs.com.google.accompanist.themeadapter.material3
+
+    implementation libs.coil.compose
 }
 
 // Allow references to generated code
