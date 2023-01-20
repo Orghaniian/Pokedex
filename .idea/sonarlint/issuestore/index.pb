@@ -16,12 +16,6 @@ M
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 ;
 gradlew.bat,2/a/2a45a911a8f1836b0b6c5b758962572012d8f8c3
-P
- app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
-k
-;app/src/main/java/com/orghaniian/pokedex/MainApplication.kt,d/f/dff8da9522e1c7af0144b01db2e1261ab8b7de21
-h
-8app/src/main/java/com/orghaniian/pokedex/MainActivity.kt,d/e/de8c38d00afbbd54ca79b953dc64e9ccddab1b77
 A
 gradle.properties,2/a/2afbb999f001938c88fa43fc2ef52abf0f8213e4
 ‰
@@ -56,8 +50,6 @@ v
 Fdata/src/main/java/com/orghaniian/data/paging/PokemonRemoteMediator.kt,e\f\ef759f25bd5bc0642056aafdf9258935109f7fee
 u
 Edata/src/main/java/com/orghaniian/data/remote/model/PokemonSpecies.kt,e\a\ea707a960fefb30d223942dcde8b7376c1b2660b
-m
-=data/src/main/java/com/orghaniian/data/di/RepositoryModule.kt,e\d\ed3f5abbd4d8b1064b758a4fee33e8c8a6f5598f
 g
 7data/src/main/java/com/orghaniian/data/di/RoomModule.kt,2\0\20d31195dfb42bc3defb1275145259e1958579b2
 d

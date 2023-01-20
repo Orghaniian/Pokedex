@@ -1,4 +1,4 @@
-package com.orghaniian.pokedex.ui.pokemonlist
+package com.orghaniian.pokedex.ui.pokedex
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -31,7 +31,7 @@ import com.orghaniian.pokedex.ui.utils.formatOrder
 
 @Composable
 fun PokemonCard(
-    pokemon: PokemonListItemUiState,
+    pokemon: PokedexItemUiState,
     modifier: Modifier = Modifier,
 ) {
     Surface (
@@ -134,7 +134,7 @@ fun SkeletonPokemonCard(
 private fun PokemonCardPreview() {
     MaterialTheme {
         PokemonCard(
-            PokemonListItemUiState(
+            PokedexItemUiState(
                 "Bulbizarre",
                 1,
                 listOf(Type.GRASS, Type.POISON),

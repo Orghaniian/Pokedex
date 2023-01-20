@@ -1,4 +1,4 @@
-package com.orghaniian.pokedex.ui.pokemonlist
+package com.orghaniian.pokedex.ui.pokedex
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -21,8 +21,8 @@ import com.orghaniian.pokedex.R
 
 @Composable
 fun PokemonGrid(
-    pokemons: LazyPagingItems<PokemonListItemUiState>,
-    onPokemonClick: (PokemonListItemUiState) -> Unit,
+    pokemons: LazyPagingItems<PokedexItemUiState>,
+    onPokemonClick: (PokedexItemUiState) -> Unit,
     modifier: Modifier = Modifier
 ) = CustomGrid(
     modifier = modifier
@@ -62,7 +62,7 @@ private fun PreviewCustomGrid() {
     val pokemons = buildList {
         repeat(16) {
             add(
-                PokemonListItemUiState(
+                PokedexItemUiState(
                     "Bulbizarre",
                     1,
                     listOf(Type.GRASS, Type.POISON),
@@ -71,7 +71,7 @@ private fun PreviewCustomGrid() {
                 )
             )
             add(
-                PokemonListItemUiState(
+                PokedexItemUiState(
                     "Bulbizarre",
                     1,
                     listOf(Type.GRASS, Type.POISON),
@@ -80,7 +80,7 @@ private fun PreviewCustomGrid() {
                 )
             )
             add(
-                PokemonListItemUiState(
+                PokedexItemUiState(
                     "Bulbizarre",
                     1,
                     listOf(Type.GRASS),

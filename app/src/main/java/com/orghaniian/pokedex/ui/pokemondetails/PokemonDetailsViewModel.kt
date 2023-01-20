@@ -33,7 +33,7 @@ class PokemonDetailsViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            val order = PokemonDetailsFragmentArgs.fromSavedStateHandle(savedStateHandle).order
+            val order = savedStateHandle.get<String>("pokemonId")!!.toInt()
             _uiState.update {
                 it.copy(
                     pokemon = repository.getPokemon(order, LocaleListCompat.getAdjustedDefault()).toUiStatePokemon()

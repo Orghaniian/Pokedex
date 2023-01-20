@@ -16,6 +16,7 @@ import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.orghaniian.data.model.Type
 import com.orghaniian.pokedex.R
@@ -29,7 +30,7 @@ import com.orghaniian.pokedex.ui.utils.formatOrder
 
 @Composable
 fun PokemonDetailsRoute(
-    viewModel: PokemonDetailsViewModel
+    viewModel: PokemonDetailsViewModel = hiltViewModel()
 ) {
     val state by viewModel.uiState.collectAsState()
 
@@ -67,7 +68,8 @@ fun PokemonDetails(
                         modifier = Modifier
                             .padding(dimensionResource(R.dimen.screen_padding))
                             .onGloballyPositioned { coordinates ->
-                                columnHeightDp = with(localDensity) { coordinates.size.height.toDp() }
+                                columnHeightDp =
+                                    with(localDensity) { coordinates.size.height.toDp() }
                             }
                     ) {
                         Row(
