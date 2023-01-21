@@ -96,10 +96,6 @@ Capp/src/main/java/com/orghaniian/pokedex/ui/utils/TypeExtensions.kt,d\8\d8942a
 Qapp/src/main/java/com/orghaniian/pokedex/ui/pokemondetails/evolution/Evolution.kt,5\e\5ef3680fa18c3fdc0eeb9be6148f29aa23c947ac
 m
 =data/src/main/java/com/orghaniian/data/di/RepositoryModule.kt,e\d\ed3f5abbd4d8b1064b758a4fee33e8c8a6f5598f
-I
-gradle/libs.versions.toml,d\7\d7595319a0658be6f1ed500ad590d42e4b28bc4f
-@
-app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 …
 Uapp/src/main/java/com/orghaniian/pokedex/ui/pokemondetails/PokemonDetailsViewModel.kt,8\2\820efe54d7644664ad59525bbffaba270712cd7d
 y

@@ -7,11 +7,8 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.orghaniian.pokedex.R
 
 private val lightColors = lightColorScheme(
     primary = PokedexColor.light.primary,
@@ -73,116 +70,107 @@ private val darkColors = darkColorScheme(
     surfaceTint = PokedexColor.dark.surfaceTint
 )
 
-//fixme
-private val publicSans = FontFamily(
-    Font(R.font.public_sans),
-    Font(R.font.public_sans_regular, FontWeight.Normal),
-    Font(R.font.public_sans_medium, FontWeight.Medium),
-    Font(R.font.public_sans_semibold, FontWeight.SemiBold),
-    Font(R.font.public_sans_bold, FontWeight.Bold),
-)
-
 private val typography = Typography(
     displayLarge = TextStyle(
-        //fontFamily = publicSans,
+        fontFamily = publicSans,
         fontWeight = FontWeight.Normal,
         lineHeight = 64.sp,
         fontSize = 57.sp,
         letterSpacing = (-.25).sp
     ),
     displayMedium = TextStyle(
-        //fontFamily = publicSans,
+        fontFamily = publicSans,
         fontWeight = FontWeight.Normal,
         lineHeight = 52.sp,
         fontSize = 45.sp,
         letterSpacing = 0.sp
     ),
     displaySmall = TextStyle(
-        //fontFamily = publicSans,
+        fontFamily = publicSans,
         fontWeight = FontWeight.Normal,
         lineHeight = 44.sp,
         fontSize = 36.sp,
         letterSpacing = 0.sp
     ),
     headlineLarge = TextStyle(
-        //fontFamily = publicSans,
-        fontWeight = FontWeight.Medium,
+        fontFamily = publicSans,
+        fontWeight = FontWeight.ExtraBold,
         lineHeight = 40.sp,
         fontSize = 32.sp,
         letterSpacing = 0.sp
     ),
     headlineMedium = TextStyle(
-        //fontFamily = publicSans,
+        fontFamily = publicSans,
         fontWeight = FontWeight.Normal,
         lineHeight = 36.sp,
         fontSize = 28.sp,
         letterSpacing = 0.sp
     ),
     headlineSmall = TextStyle(
-        //fontFamily = publicSans,
+        fontFamily = publicSans,
         fontWeight = FontWeight.Normal,
         lineHeight = 32.sp,
         fontSize = 24.sp,
         letterSpacing = 0.sp
     ),
     titleLarge = TextStyle(
-        //fontFamily = publicSans,
+        fontFamily = publicSans,
         fontWeight = FontWeight.Normal,
         lineHeight = 28.sp,
         fontSize = 22.sp,
         letterSpacing = 0.sp
     ),
     titleMedium = TextStyle(
-        //fontFamily = publicSans,
+        fontFamily = publicSans,
         fontWeight = FontWeight.Medium,
         lineHeight = 24.sp,
         fontSize = 16.sp,
         letterSpacing = .15.sp
     ),
     titleSmall = TextStyle(
-        //fontFamily = publicSans,
+        fontFamily = publicSans,
         fontWeight = FontWeight.Medium,
         lineHeight = 20.sp,
         fontSize = 14.sp,
         letterSpacing = .1.sp
     ),
     bodyLarge = TextStyle(
-        //fontFamily = publicSans,
+        fontFamily = publicSans,
         fontWeight = FontWeight.Normal,
         lineHeight = 24.sp,
         fontSize = 16.sp,
         letterSpacing = .5.sp
     ),
     bodyMedium = TextStyle(
-        //fontFamily = publicSans,
+        fontFamily = publicSans,
         fontWeight = FontWeight.Normal,
         lineHeight = 20.sp,
         fontSize = 14.sp,
         letterSpacing = .25.sp
     ),
     bodySmall = TextStyle(
-        //fontFamily = publicSans,
+        fontFamily = publicSans,
         fontWeight = FontWeight.Normal,
         lineHeight = 16.sp,
         fontSize = 12.sp,
         letterSpacing = .4.sp
     ),
     labelLarge = TextStyle(
-        //fontFamily = publicSans,
+        fontFamily = publicSans,
         fontWeight = FontWeight.SemiBold,
         lineHeight = 20.sp,
         fontSize = 14.sp,
         letterSpacing = .1.sp
     ),
     labelMedium = TextStyle(
-        //fontFamily = publicSans,
+        fontFamily = publicSans,
         fontWeight = FontWeight.Medium,
         lineHeight = 16.sp,
         fontSize = 12.sp,
         letterSpacing = .5.sp
     ),
     labelSmall = TextStyle(
-        //fontFamily = publicSans,
+        fontFamily = publicSans,
         fontWeight = FontWeight.Medium,
         lineHeight = 16.sp,
         fontSize = 11.sp,

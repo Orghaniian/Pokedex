@@ -24,6 +24,7 @@ coil = "2.2.2"
 androidx-lifecycle-compose = "2.6.0-alpha04"
 androidx-activity-compose = "1.6.1"
 hilt = "1.1.0-alpha01"
+google-font = "1.4.0-alpha04"
 
 [libraries]
 junit = { module = "junit:junit", version.ref = "junit" }
@@ -62,6 +63,7 @@ hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", ve
 com-google-accompanist-themeadapter-material3 = { module = "com.google.accompanist:accompanist-themeadapter-material3", version.ref = "com-google-accompanist" }
 
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+google-fonts = { module = "androidx.compose.ui:ui-text-google-fonts", version.ref = "google-font" }
 
 
 [plugins]
