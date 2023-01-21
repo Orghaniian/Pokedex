@@ -1,20 +1,18 @@
 package com.orghaniian.pokedex.ui.utils
 
-import androidx.annotation.ColorRes
-import com.orghaniian.pokedex.R
 import com.orghaniian.data.model.Color
+import com.orghaniian.pokedex.ui.theme.PokedexColor
 
-@get:ColorRes
-val Color.colorResourceID: Int
+val Color.value: androidx.compose.ui.graphics.Color
     get() = when (this) {
-        Color.BLACK -> R.color.black
-        Color.BLUE -> R.color.blue
-        Color.BROWN -> R.color.brown
-        Color.GRAY -> R.color.gray
-        Color.GREEN -> R.color.green
-        Color.PINK -> R.color.pink
-        Color.PURPLE -> R.color.purple
-        Color.RED -> R.color.red
-        Color.WHITE -> R.color.white
-        Color.YELLOW -> R.color.yellow
+        Color.BLACK -> PokedexColor.black
+        Color.BLUE -> PokedexColor.blue
+        Color.BROWN -> PokedexColor.brown
+        Color.GRAY -> PokedexColor.gray
+        Color.GREEN -> PokedexColor.green
+        Color.PINK -> PokedexColor.pink
+        Color.PURPLE -> PokedexColor.purple
+        Color.RED -> PokedexColor.red
+        Color.WHITE -> PokedexColor.white
+        Color.YELLOW -> PokedexColor.yellow
     }

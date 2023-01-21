@@ -9,7 +9,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.capitalize
@@ -26,8 +25,9 @@ import com.orghaniian.pokedex.ui.pokemondetails.about.About
 import com.orghaniian.pokedex.ui.pokemondetails.basestats.BaseStats
 import com.orghaniian.pokedex.ui.pokemondetails.evolution.Evolution
 import com.orghaniian.pokedex.ui.pokemondetails.moves.Moves
-import com.orghaniian.pokedex.ui.utils.colorResourceID
+import com.orghaniian.pokedex.ui.theme.PokedexColor
 import com.orghaniian.pokedex.ui.utils.formatOrder
+import com.orghaniian.pokedex.ui.utils.value
 
 @Composable
 fun PokemonDetails(
@@ -52,9 +52,9 @@ fun PokemonDetailsContent(
     val localDensity = LocalDensity.current
 
     Surface(
-        color = uiState.pokemon?.let{ colorResource(it.color.colorResourceID) }
+        color = uiState.pokemon?.color?.value
             ?: MaterialTheme.colorScheme.background,
-        contentColor = colorResource(R.color.on_type)
+        contentColor = PokedexColor.onType
     ) {
         Column(
             modifier = Modifier.statusBarsPadding()
@@ -98,7 +98,7 @@ fun PokemonDetailsContent(
                                 Text(
                                     text = formatOrder(uiState.pokemon.order),
                                     style = MaterialTheme.typography.labelLarge,
-                                    color = colorResource(R.color.on_type)
+                                    color = PokedexColor.onType
                                 )
                             }
                             Row(

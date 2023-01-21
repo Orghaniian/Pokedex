@@ -26,8 +26,6 @@ Q
 !data/src/main/AndroidManifest.xml,f\a\fa20ad08e770fe0392ec3df5be8c6bde6c35d607
 k
 ;data/src/main/java/com/orghaniian/data/local/AppDatabase.kt,f\5\f50553741c434bb062f0e00d1a9e4b4262214308
-e
-5data/src/main/java/com/orghaniian/data/model/Color.kt,4\6\460015f99404100b70c10d5536a4a0a351dc32b7
 j
 :data/src/main/java/com/orghaniian/data/local/Converters.kt,6\5\65fe0b403d07e2cd42fce9355cb27e0f0f9c8b2b
 u
@@ -85,13 +83,9 @@ p
 C
 domain/build.gradle,a\3\a3021bb5ba623a461b5fdb89ae51923a4945c354
 r
-Bapp/src/main/java/com/orghaniian/pokedex/ui/components/TypeChip.kt,b\f\bf3605806f2049f24b70bd8dc512cf2449b288a5
-r
 Bdata/src/main/java/com/orghaniian/data/remote/model/APIResource.kt,6\8\68c2d618965754a65eb4864935534131132ba6e3
 g
 7data/src/main/java/com/orghaniian/data/local/Pokemon.kt,b\a\ba2463eb7abaddc9302a39eaf798496d92cd9b05
-s
-Capp/src/main/java/com/orghaniian/pokedex/ui/utils/ColorExtension.kt,8\0\806c540259fc214b543913904393fca27471060c
 q
 Aapp/src/main/java/com/orghaniian/pokedex/ui/utils/PokemonUtils.kt,9\6\96b87efab26f4da7d113bfd8efaadad919c5a175
 y
@@ -102,23 +96,15 @@ Capp/src/main/java/com/orghaniian/pokedex/ui/utils/TypeExtensions.kt,d\8\d8942a
 Qapp/src/main/java/com/orghaniian/pokedex/ui/pokemondetails/evolution/Evolution.kt,5\e\5ef3680fa18c3fdc0eeb9be6148f29aa23c947ac
 m
 =data/src/main/java/com/orghaniian/data/di/RepositoryModule.kt,e\d\ed3f5abbd4d8b1064b758a4fee33e8c8a6f5598f
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 I
 gradle/libs.versions.toml,d\7\d7595319a0658be6f1ed500ad590d42e4b28bc4f
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
-h
-8app/src/main/java/com/orghaniian/pokedex/MainActivity.kt,d\e\de8c38d00afbbd54ca79b953dc64e9ccddab1b77
 n
 >app/src/main/java/com/orghaniian/pokedex/ui/PokedexAppState.kt,5\0\5092850db5b9ee2618ea1c074ebf36242d47db80
-r
-Bapp/src/main/java/com/orghaniian/pokedex/ui/pokedex/PokemonCard.kt,1\f\1fd453066a22bf156d8a2af38c48c32e10932ed2
 …
 Uapp/src/main/java/com/orghaniian/pokedex/ui/pokemondetails/PokemonDetailsViewModel.kt,8\2\820efe54d7644664ad59525bbffaba270712cd7d
 y
 Iapp/src/main/java/com/orghaniian/pokedex/ui/pokemondetails/about/About.kt,9\7\9798dee8edd5cd603ab8d7a06bfff65064361c35
 v
 Fapp/src/main/java/com/orghaniian/pokedex/ui/components/ReturnButton.kt,5\1\518fcb87fd22c7bcf27ad04faa9cd2d47f8e6d6c
-i
-9app/src/main/java/com/orghaniian/pokedex/ui/PokedexApp.kt,2\c\2c180337fa0dd82060a457a5557869ffa301a7f9

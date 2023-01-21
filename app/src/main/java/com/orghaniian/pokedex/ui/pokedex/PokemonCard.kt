@@ -12,7 +12,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -26,8 +25,9 @@ import coil.compose.AsyncImage
 import com.orghaniian.data.model.Type
 import com.orghaniian.pokedex.R
 import com.orghaniian.pokedex.ui.components.TypeChip
-import com.orghaniian.pokedex.ui.utils.colorResourceID
+import com.orghaniian.pokedex.ui.theme.PokedexColor
 import com.orghaniian.pokedex.ui.utils.formatOrder
+import com.orghaniian.pokedex.ui.utils.value
 
 @Composable
 fun PokemonCard(
@@ -35,8 +35,8 @@ fun PokemonCard(
     modifier: Modifier = Modifier,
 ) {
     Surface (
-        color = colorResource(pokemon.color.colorResourceID),
-        contentColor = colorResource(R.color.on_type),
+        color = pokemon.color.value,
+        contentColor = PokedexColor.onType,
         shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius)),
         modifier = modifier,
     ) {
@@ -72,7 +72,7 @@ fun PokemonCard(
                 Text(
                     text = formatOrder(pokemon.order),
                     style = MaterialTheme.typography.labelSmall,
-                    color = colorResource(R.color.on_type_variant),
+                    color = PokedexColor.onTypeVariant,
                     modifier = Modifier
                         .constrainAs(order) {
                             top.linkTo(parent.top, margin = padding)
@@ -121,7 +121,7 @@ fun SkeletonPokemonCard(
 ) {
     Surface (
         color = MaterialTheme.colorScheme.onSurfaceVariant,
-        contentColor = colorResource(R.color.on_type),
+        contentColor = PokedexColor.onType,
         shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius)),
         modifier = modifier
     ) {
