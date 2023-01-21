@@ -10,11 +10,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import com.orghaniian.pokedex.R
+import com.orghaniian.pokedex.ui.theme.Dimensions
 
 @Composable
 fun ReturnButton(
@@ -31,7 +31,7 @@ fun ReturnButton(
             interactionSource = remember { MutableInteractionSource() },
             indication = rememberRipple(
                 bounded = false,
-                radius = dimensionResource(R.dimen.icon_button_ripple_radius)
+                radius = Dimensions.iconButtonRippleRadius
             )
         )
     )

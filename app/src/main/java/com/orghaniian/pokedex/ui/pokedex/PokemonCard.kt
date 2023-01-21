@@ -12,7 +12,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.capitalize
@@ -25,6 +24,7 @@ import coil.compose.AsyncImage
 import com.orghaniian.data.model.Type
 import com.orghaniian.pokedex.R
 import com.orghaniian.pokedex.ui.components.TypeChip
+import com.orghaniian.pokedex.ui.theme.Dimensions
 import com.orghaniian.pokedex.ui.theme.PokedexColor
 import com.orghaniian.pokedex.ui.utils.formatOrder
 import com.orghaniian.pokedex.ui.utils.value
@@ -37,12 +37,12 @@ fun PokemonCard(
     Surface (
         color = pokemon.color.value,
         contentColor = PokedexColor.onType,
-        shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius)),
+        shape = RoundedCornerShape(Dimensions.cornerRadius),
         modifier = modifier,
     ) {
-        val leftColumnMargin = dimensionResource(R.dimen.pokemon_list_item_left_column_margin)
-        val itemNameMarginBottom = dimensionResource(R.dimen.pokemon_list_item_name_margin_bottom)
-        val padding = dimensionResource(R.dimen.pokemon_list_item_padding)
+        val leftColumnMargin = Dimensions.pokemonListItemLeftColumnMargin
+        val itemNameMarginBottom = Dimensions.pokemonListItemNameMarginBottom
+        val padding = Dimensions.pokemonListItemPadding
 
         Box {
             Image(
@@ -82,7 +82,7 @@ fun PokemonCard(
 
                 Column(
                     verticalArrangement = Arrangement.spacedBy(
-                        dimensionResource(R.dimen.pokemon_list_item_types_spacing)
+                        Dimensions.pokemonListItemTypesSpacing
                     ),
                     modifier = Modifier.constrainAs(types) {
                         start.linkTo(name.start, leftColumnMargin)
@@ -122,7 +122,7 @@ fun SkeletonPokemonCard(
     Surface (
         color = MaterialTheme.colorScheme.onSurfaceVariant,
         contentColor = PokedexColor.onType,
-        shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius)),
+        shape = RoundedCornerShape(Dimensions.cornerRadius),
         modifier = modifier
     ) {
         CircularProgressIndicator()

@@ -12,7 +12,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.capitalize
@@ -20,6 +19,7 @@ import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.tooling.preview.Preview
 import com.orghaniian.data.model.Type
 import com.orghaniian.pokedex.R
+import com.orghaniian.pokedex.ui.theme.Dimensions
 import com.orghaniian.pokedex.ui.theme.PokedexColor
 import com.orghaniian.pokedex.ui.utils.getIconResourceId
 import com.orghaniian.pokedex.ui.utils.stringResourceID
@@ -31,16 +31,16 @@ fun TypeChip(
     Surface(
         color = PokedexColor.typeChipBackground,
         contentColor = PokedexColor.onType,
-        shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius))
+        shape = RoundedCornerShape(Dimensions.cornerRadius)
     ) {
         val name = stringResource(type.stringResourceID).capitalize(Locale.current)
 
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
-                .height(dimensionResource(R.dimen.type_chip_height))
+                .height(Dimensions.typeChipHeight)
                 .padding(
-                    horizontal = dimensionResource(R.dimen.type_chip_padding_horizontal)
+                    horizontal = Dimensions.typeChipPaddingHorizontal
                 ),
         ) {
             Icon(
@@ -50,8 +50,8 @@ fun TypeChip(
                     name
                 ),
                 modifier = Modifier
-                    .padding(end = dimensionResource(R.dimen.type_chip_spacing))
-                    .size(dimensionResource(R.dimen.type_chip_icon_size))
+                    .padding(end = Dimensions.typeChipSpacing)
+                    .size(Dimensions.typeChipIconSize)
             )
             Text(
                 text = name,

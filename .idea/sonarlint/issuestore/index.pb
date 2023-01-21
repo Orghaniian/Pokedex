@@ -100,11 +100,7 @@ I
 gradle/libs.versions.toml,d\7\d7595319a0658be6f1ed500ad590d42e4b28bc4f
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
-n
->app/src/main/java/com/orghaniian/pokedex/ui/PokedexAppState.kt,5\0\5092850db5b9ee2618ea1c074ebf36242d47db80
 …
 Uapp/src/main/java/com/orghaniian/pokedex/ui/pokemondetails/PokemonDetailsViewModel.kt,8\2\820efe54d7644664ad59525bbffaba270712cd7d
 y
 Iapp/src/main/java/com/orghaniian/pokedex/ui/pokemondetails/about/About.kt,9\7\9798dee8edd5cd603ab8d7a06bfff65064361c35
-v
-Fapp/src/main/java/com/orghaniian/pokedex/ui/components/ReturnButton.kt,5\1\518fcb87fd22c7bcf27ad04faa9cd2d47f8e6d6c

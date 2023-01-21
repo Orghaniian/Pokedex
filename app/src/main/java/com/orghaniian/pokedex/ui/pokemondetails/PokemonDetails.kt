@@ -9,7 +9,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.intl.Locale
@@ -25,6 +24,7 @@ import com.orghaniian.pokedex.ui.pokemondetails.about.About
 import com.orghaniian.pokedex.ui.pokemondetails.basestats.BaseStats
 import com.orghaniian.pokedex.ui.pokemondetails.evolution.Evolution
 import com.orghaniian.pokedex.ui.pokemondetails.moves.Moves
+import com.orghaniian.pokedex.ui.theme.Dimensions
 import com.orghaniian.pokedex.ui.theme.PokedexColor
 import com.orghaniian.pokedex.ui.utils.formatOrder
 import com.orghaniian.pokedex.ui.utils.value
@@ -61,7 +61,7 @@ fun PokemonDetailsContent(
         ) {
             if(onBackPressed != null) {
                 ReturnButton(
-                    modifier = Modifier.padding(dimensionResource(R.dimen.screen_padding)),
+                    modifier = Modifier.padding(Dimensions.screenPadding),
                     onClick = onBackPressed
                 )
             }
@@ -80,7 +80,7 @@ fun PokemonDetailsContent(
                     Column {
                         Column(
                             modifier = Modifier
-                                .padding(horizontal = dimensionResource(R.dimen.screen_padding))
+                                .padding(horizontal = Dimensions.screenPadding)
                                 .onGloballyPositioned { coordinates ->
                                     columnHeightDp =
                                         with(localDensity) { coordinates.size.height.toDp() }
@@ -103,9 +103,9 @@ fun PokemonDetailsContent(
                             }
                             Row(
                                 horizontalArrangement = Arrangement.spacedBy(
-                                    dimensionResource(R.dimen.pokemon_list_item_types_spacing)
+                                    Dimensions.pokemonListItemTypesSpacing
                                 ),
-                                modifier = Modifier.padding(dimensionResource(R.dimen.margin_m))
+                                modifier = Modifier.padding(Dimensions.marginM)
                             ) {
                                 uiState.pokemon.types.forEach {
                                     TypeChip(it)
@@ -152,8 +152,8 @@ private fun DetailsTabs(
         color = MaterialTheme.colorScheme.background,
         contentColor = MaterialTheme.colorScheme.onBackground,
         shape = RoundedCornerShape(
-            topStart = dimensionResource(R.dimen.drawer_corner_radius),
-            topEnd = dimensionResource(R.dimen.drawer_corner_radius)
+            topStart = Dimensions.drawerCornerRadius,
+            topEnd = Dimensions.drawerCornerRadius
         ),
         modifier = modifier.fillMaxSize()
     ) {
@@ -171,7 +171,7 @@ private fun DetailsTabs(
             }
 
             Box(
-                modifier = Modifier.padding(dimensionResource(R.dimen.screen_padding))
+                modifier = Modifier.padding(Dimensions.screenPadding)
             ) {
                 if (uiState.pokemon == null) {
                     CircularProgressIndicator()

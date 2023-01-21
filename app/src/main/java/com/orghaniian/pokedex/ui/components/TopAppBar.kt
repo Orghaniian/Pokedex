@@ -12,10 +12,9 @@ import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
-import com.orghaniian.pokedex.R
+import com.orghaniian.pokedex.ui.theme.Dimensions
 import kotlin.math.abs
 import kotlin.math.roundToInt
 
@@ -170,7 +169,7 @@ private fun TopAppBarContent(
     Column(
         modifier
             .statusBarsPadding()
-            .padding(dimensionResource(R.dimen.screen_padding))
+            .padding(Dimensions.screenPadding)
     ) {
         if(onBackPressed != null) {
             ReturnButton(
@@ -180,7 +179,7 @@ private fun TopAppBarContent(
         Text(
             text = title,
             style = MaterialTheme.typography.headlineLarge,
-            modifier = Modifier.padding(dimensionResource(R.dimen.margin_m))
+            modifier = Modifier.padding(Dimensions.marginM)
         )
     }
 }

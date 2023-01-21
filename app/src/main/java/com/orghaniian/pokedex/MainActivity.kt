@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.view.WindowCompat
 import com.orghaniian.pokedex.ui.PokedexApp
+import com.orghaniian.pokedex.ui.theme.Dimensions
 import com.orghaniian.pokedex.ui.theme.PokedexTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,8 +22,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            PokedexTheme {
-                PokedexApp()
+            Dimensions {
+                PokedexTheme {
+                    PokedexApp()
+                }
             }
         }
     }
