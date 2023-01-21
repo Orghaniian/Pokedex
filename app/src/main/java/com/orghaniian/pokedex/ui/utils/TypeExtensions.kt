@@ -1,6 +1,7 @@
 package com.orghaniian.pokedex.ui.utils
 
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import com.orghaniian.data.model.Type
 import com.orghaniian.data.model.Type.*
 import com.orghaniian.pokedex.R
@@ -29,6 +30,7 @@ fun Type.getIconResourceId(): Int = when(this) {
     SHADOW -> R.drawable.dark
 }
 
+@get:StringRes
 val Type.stringResourceID: Int
     get() = when (this) {
         NORMAL -> R.string.type_normal

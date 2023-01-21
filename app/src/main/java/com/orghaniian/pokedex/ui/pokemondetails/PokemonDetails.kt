@@ -16,6 +16,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
+import com.orghaniian.data.local.PokemonStat
+import com.orghaniian.data.model.Stat
 import com.orghaniian.data.model.Type
 import com.orghaniian.pokedex.R
 import com.orghaniian.pokedex.ui.components.ReturnButton
@@ -23,7 +25,6 @@ import com.orghaniian.pokedex.ui.components.TypeChip
 import com.orghaniian.pokedex.ui.pokemondetails.about.About
 import com.orghaniian.pokedex.ui.pokemondetails.basestats.BaseStats
 import com.orghaniian.pokedex.ui.pokemondetails.evolution.Evolution
-import com.orghaniian.pokedex.ui.pokemondetails.moves.Moves
 import com.orghaniian.pokedex.ui.theme.Dimensions
 import com.orghaniian.pokedex.ui.theme.PokedexColor
 import com.orghaniian.pokedex.ui.utils.formatOrder
@@ -178,9 +179,8 @@ private fun DetailsTabs(
                 } else {
                     when(uiState.currentTab) {
                         PokemonDetailsUiState.Tab.About -> About(pokemon = uiState.pokemon)
-                        PokemonDetailsUiState.Tab.BaseStats -> BaseStats(pokemon = uiState.pokemon)
+                        PokemonDetailsUiState.Tab.BaseStats -> BaseStats(stats = uiState.pokemon.stats)
                         PokemonDetailsUiState.Tab.Evolution -> Evolution(pokemon = uiState.pokemon)
-                        PokemonDetailsUiState.Tab.Moves -> Moves(pokemon = uiState.pokemon)
                     }
                 }
             }
@@ -206,7 +206,11 @@ private fun PreviewPokemonDetails() {
                     com.orghaniian.data.model.Color.GREEN,
                     0.1f,
                     2f,
-                    .7f
+                    .7f,
+                    listOf(
+                        PokemonStat(Stat.HP, 45),
+                        PokemonStat(Stat.ATTACK, 70)
+                    )
                 ),
                 currentTab = currentTab,
                 tabs = PokemonDetailsUiState.Tab.values().asList()

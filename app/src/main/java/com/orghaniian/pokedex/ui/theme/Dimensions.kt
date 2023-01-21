@@ -48,6 +48,7 @@ class DimensionsValues (
     pokemonListItemTypesSpacing: Dp = 5.dp,
     screenPadding: Dp = 16.dp,
     marginM: Dp = 8.dp,
+    infoSpacing: Dp = 32.dp,
     iconButtonRippleRadius: Dp = 16.dp,
 ) {
     var cornerRadius by mutableStateOf(cornerRadius, structuralEqualityPolicy())
@@ -74,6 +75,8 @@ class DimensionsValues (
         internal set
     var marginM by mutableStateOf(marginM, structuralEqualityPolicy())
         internal set
+    var infoSpacing by mutableStateOf(infoSpacing, structuralEqualityPolicy())
+        internal set
     var iconButtonRippleRadius by mutableStateOf(iconButtonRippleRadius, structuralEqualityPolicy())
         internal set
     
@@ -90,6 +93,7 @@ class DimensionsValues (
         pokemonListItemTypesSpacing: Dp = this.pokemonListItemTypesSpacing,
         screenPadding: Dp = this.screenPadding,
         marginM: Dp = this.marginM,
+        infoSpacing: Dp = this.infoSpacing,
         iconButtonRippleRadius: Dp = this.iconButtonRippleRadius,
     ) = DimensionsValues(
         cornerRadius = cornerRadius,
@@ -104,6 +108,7 @@ class DimensionsValues (
         pokemonListItemTypesSpacing = pokemonListItemTypesSpacing,
         screenPadding = screenPadding,
         marginM = marginM,
+        infoSpacing = infoSpacing,
         iconButtonRippleRadius = iconButtonRippleRadius,
     )
 }
@@ -121,5 +126,6 @@ internal fun DimensionsValues.updateDimensValuesFrom(other: DimensionsValues) {
     pokemonListItemTypesSpacing = other.pokemonListItemTypesSpacing
     screenPadding = other.screenPadding
     marginM = other.marginM
+    infoSpacing = other.infoSpacing
     iconButtonRippleRadius = other.iconButtonRippleRadius
 }

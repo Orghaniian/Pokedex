@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.orghaniian.data.PokemonRepository
 import com.orghaniian.data.local.Pokemon
+import com.orghaniian.data.local.PokemonStat
 import com.orghaniian.data.model.Color
 import com.orghaniian.data.model.Type
 import com.orghaniian.pokedex.R
@@ -53,7 +54,8 @@ class PokemonDetailsViewModel @Inject constructor(
             color,
             height,
             weight,
-            genderRate
+            genderRate,
+            stats
         )
     }
 }
@@ -71,13 +73,13 @@ data class PokemonDetailsUiState(
         val color: Color,
         val height: Float,
         val weight: Float,
-        val genderRate: Float
+        val genderRate: Float,
+        val stats: List<PokemonStat>
     )
 
     enum class Tab(@StringRes val titleId: Int) {
         About(R.string.about_name),
         BaseStats(R.string.base_stats_name),
-        Evolution(R.string.evolution_name),
-        Moves(R.string.moves_name)
+        Evolution(R.string.evolution_name)
     }
 }
