@@ -4,10 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyGridScope
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.*
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -23,9 +20,11 @@ import com.orghaniian.pokedex.R
 fun PokemonGrid(
     pokemons: LazyPagingItems<PokedexItemUiState>,
     onPokemonClick: (PokedexItemUiState) -> Unit,
+    state: LazyGridState = rememberLazyGridState(),
     modifier: Modifier = Modifier
 ) = CustomGrid(
-    modifier = modifier
+    modifier = modifier,
+    state = state
 ) {
     items(
         count = pokemons.itemCount,
@@ -46,13 +45,15 @@ fun PokemonGrid(
 private fun CustomGrid(
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(16.dp),
-    content: LazyGridScope.() -> Unit
+    state: LazyGridState = rememberLazyGridState(),
+    content: LazyGridScope.() -> Unit,
 ) = LazyVerticalGrid(
     verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_m)),
     horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.margin_m)),
     modifier = modifier,
     columns = GridCells.Adaptive(minSize = 128.dp),
     contentPadding = contentPadding,
+    state = state,
     content = content
 )
 

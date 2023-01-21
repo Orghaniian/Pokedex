@@ -11,6 +11,8 @@ import com.orghaniian.data.local.Pokemon
 import com.orghaniian.data.model.Color
 import com.orghaniian.data.model.Type
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
@@ -18,11 +20,22 @@ import javax.inject.Inject
 class PokedexViewModel @Inject constructor(
     repository: PokemonRepository
 ): ViewModel() {
+    private var lastScrollIndex = 0
+
+    private val _scrollUp = MutableStateFlow(false)
+    val scrollUp: StateFlow<Boolean>
+        get() = _scrollUp
 
     val pagingData = repository.getPagingData(PagingConfig(PAGE_SIZE), LocaleListCompat.getAdjustedDefault()).map { pagingData ->
         pagingData.map { it.toPokedexItemUiState() }
     }.cachedIn(viewModelScope)
 
+    fun updateScrollPosition(newScrollIndex: Int) {
+        if (newScrollIndex == lastScrollIndex) return
+
+        _scrollUp.value = newScrollIndex > lastScrollIndex
+        lastScrollIndex = newScrollIndex
+    }
 
     private fun Pokemon.toPokedexItemUiState() = PokedexItemUiState(
         name,
