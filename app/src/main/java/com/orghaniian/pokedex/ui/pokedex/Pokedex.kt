@@ -38,7 +38,7 @@ fun Pokedex(
         },
     ) { paddingValues ->
         PokemonGrid(
-            pokemons,
+            pokemons = pokemons,
             onPokemonClick = { pokemon ->
                 navigateToDetails(pokemon.order)
             },
