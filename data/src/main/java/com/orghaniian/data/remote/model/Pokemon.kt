@@ -9,6 +9,7 @@ import com.google.gson.annotations.SerializedName
     @SerializedName("sprites") val sprites: PokemonSprites,
     @SerializedName("height") val height: Int,
     @SerializedName("weight") val weight: Int,
+    @SerializedName("stats") val stats: List<PokemonStat>,
 )
 
  data class PokemonType(
@@ -26,4 +27,10 @@ import com.google.gson.annotations.SerializedName
 
  data class OfficialArtwork(
     @SerializedName("front_default") val frontDefault: String
+)
+
+data class PokemonStat(
+    @SerializedName("stat") val stat: NamedAPIResource,
+    @SerializedName("effort") val effort: Int,
+    @SerializedName("base_stat") val baseState: Int,
 )

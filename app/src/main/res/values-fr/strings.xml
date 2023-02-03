@@ -3,7 +3,7 @@
     <string name="pokemon_image_content_description">Illustration de %1$s</string>
     <string name="pokemon_type_image_content_description">Type %1$s</string>
     <string name="about_name">À propos</string>
-    <string name="base_stats_name">Statistiques</string>
+    <string name="base_stats_name">Stats de base</string>
     <string name="evolution_name">Évolution</string>
     <string name="moves_name">Attaques</string>
     <string name="type_normal">normal</string>
@@ -26,4 +26,18 @@
     <string name="type_fairy">fée</string>
     <string name="type_unknown">inconnu</string>
     <string name="type_shadow">ombre</string>
+    <string name="heightLabel">Taille</string>
+    <string name="weightLabel">Poids</string>
+    <string name="breedingLabel">Reproduction</string>
+    <string name="genderLabel">Genre</string>
+    <string name="back">Retour</string>
+    <string name="hp">PV</string>
+    <string name="attack">Attaque</string>
+    <string name="defense">Défense</string>
+    <string name="special_attack">Attaque spé.</string>
+    <string name="special_defense">Défense spé.</string>
+    <string name="speed">Vitesse</string>
+    <string name="accuracy">Précision</string>
+    <string name="evasion">Évasion</string>
+    <string name="total">Total</string>
 </resources>

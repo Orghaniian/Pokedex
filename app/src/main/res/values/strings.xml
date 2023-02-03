@@ -27,4 +27,18 @@
     <string name="type_fairy">fairy</string>
     <string name="type_unknown">unknown</string>
     <string name="type_shadow">shadow</string>
+    <string name="heightLabel">Height</string>
+    <string name="weightLabel">Weight</string>
+    <string name="breedingLabel">Breeding</string>
+    <string name="genderLabel">Gender</string>
+    <string name="back">Back</string>
+    <string name="hp">HP</string>
+    <string name="attack">Attack</string>
+    <string name="defense">Defense</string>
+    <string name="special_attack">Sp. Atk</string>
+    <string name="special_defense">Sp. Def</string>
+    <string name="speed">Speed</string>
+    <string name="accuracy">Accuracy</string>
+    <string name="evasion">Evasion</string>
+    <string name="total">Total</string>
 </resources>

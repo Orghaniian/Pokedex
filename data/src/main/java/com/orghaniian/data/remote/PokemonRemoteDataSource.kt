@@ -2,9 +2,11 @@ package com.orghaniian.data.remote
 
 import androidx.core.os.LocaleListCompat
 import com.orghaniian.data.local.Pokemon
+import com.orghaniian.data.model.Stat
 import com.orghaniian.data.model.Type
 import com.orghaniian.data.remote.model.ColorResource
 import com.orghaniian.data.remote.model.GetAllResponse
+import com.orghaniian.data.remote.model.PokemonStat
 import com.orghaniian.data.remote.model.PokemonType
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -46,10 +48,17 @@ class PokemonRemoteDataSource @Inject constructor(private val pokeApiService: Po
             pokemon.sprites.other.officialArtwork.frontDefault,
             (8f - species.genderRate)/8f,
             pokemon.height / 100f,
-            pokemon.weight / 10f
+            pokemon.weight / 10f,
+            pokemon.stats.toListOfStat()
         )
     }
 }
 
 private fun List<PokemonType>.toListOfType() = map { Type.valueOf(it.type.name.uppercase()) }
+private fun List<PokemonStat>.toListOfStat() = map {
+    com.orghaniian.data.local.PokemonStat(
+        Stat.valueOf(it.stat.name.replace("-", "_").uppercase()),
+        it.baseState
+    )
+}
 private fun ColorResource.toColor() = com.orghaniian.data.model.Color.valueOf(name.uppercase())

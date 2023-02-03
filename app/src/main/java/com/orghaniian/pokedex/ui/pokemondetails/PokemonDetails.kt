@@ -1,0 +1,221 @@
+package com.orghaniian.pokedex.ui.pokemondetails
+
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.capitalize
+import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import coil.compose.AsyncImage
+import com.orghaniian.data.local.PokemonStat
+import com.orghaniian.data.model.Stat
+import com.orghaniian.data.model.Type
+import com.orghaniian.pokedex.R
+import com.orghaniian.pokedex.ui.components.ReturnButton
+import com.orghaniian.pokedex.ui.components.TypeChip
+import com.orghaniian.pokedex.ui.pokemondetails.about.About
+import com.orghaniian.pokedex.ui.pokemondetails.basestats.BaseStats
+import com.orghaniian.pokedex.ui.pokemondetails.evolution.Evolution
+import com.orghaniian.pokedex.ui.theme.Dimensions
+import com.orghaniian.pokedex.ui.theme.PokedexColor
+import com.orghaniian.pokedex.ui.utils.formatOrder
+import com.orghaniian.pokedex.ui.utils.value
+
+@Composable
+fun PokemonDetails(
+    viewModel: PokemonDetailsViewModel = hiltViewModel(),
+    onBackPressed: (() -> Unit)? = null
+) {
+    val state by viewModel.uiState.collectAsState()
+
+    PokemonDetailsContent(
+        uiState = state,
+        onTabSelected = { viewModel.selectTab(it) },
+        onBackPressed = onBackPressed
+    )
+}
+
+@Composable
+fun PokemonDetailsContent(
+    uiState: PokemonDetailsUiState,
+    onTabSelected: (PokemonDetailsUiState.Tab) -> Unit,
+    onBackPressed: (() -> Unit)? = null
+) {
+    val localDensity = LocalDensity.current
+
+    Surface(
+        color = uiState.pokemon?.color?.value
+            ?: MaterialTheme.colorScheme.background,
+        contentColor = PokedexColor.onType
+    ) {
+        Column(
+            modifier = Modifier.statusBarsPadding()
+        ) {
+            if(onBackPressed != null) {
+                ReturnButton(
+                    modifier = Modifier.padding(Dimensions.screenPadding),
+                    onClick = onBackPressed
+                )
+            }
+            if(uiState.pokemon == null) {
+                CircularProgressIndicator()
+            } else {
+                var imageHeight by remember {
+                    mutableStateOf(0.dp)
+                }
+
+                Box {
+                    var columnHeightDp by remember {
+                        mutableStateOf(0.dp)
+                    }
+
+                    Column {
+                        Column(
+                            modifier = Modifier
+                                .padding(horizontal = Dimensions.screenPadding)
+                                .onGloballyPositioned { coordinates ->
+                                    columnHeightDp =
+                                        with(localDensity) { coordinates.size.height.toDp() }
+                                }
+                        ) {
+                            Row(
+                                verticalAlignment = Alignment.Bottom,
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                modifier = Modifier.fillMaxWidth()
+                            ) {
+                                Text(
+                                    text = uiState.pokemon.name.capitalize(Locale.current),
+                                    style = MaterialTheme.typography.headlineLarge
+                                )
+                                Text(
+                                    text = formatOrder(uiState.pokemon.order),
+                                    style = MaterialTheme.typography.labelLarge,
+                                    color = PokedexColor.onType
+                                )
+                            }
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(
+                                    Dimensions.pokemonListItemTypesSpacing
+                                ),
+                                modifier = Modifier.padding(Dimensions.marginM)
+                            ) {
+                                uiState.pokemon.types.forEach {
+                                    TypeChip(it)
+                                }
+                            }
+                        }
+                        Spacer(modifier = Modifier.height(imageHeight * 4/5))
+                        DetailsTabs(
+                            uiState = uiState,
+                            onTabSelected = onTabSelected,
+                            padding = PaddingValues(top = imageHeight * 1/5)
+                        )
+                    }
+                    AsyncImage(
+                        model = uiState.pokemon.spriteUrl,
+                        contentDescription = stringResource(
+                            R.string.pokemon_image_content_description,
+                            uiState.pokemon.name
+                        ),
+                        modifier = Modifier
+                            .height((LocalConfiguration.current.screenHeightDp * .3).dp)
+                            .fillMaxWidth()
+                            .padding(top = columnHeightDp)
+                            .onGloballyPositioned { coordinates ->
+                                imageHeight = with(localDensity) { coordinates.size.height.toDp() }
+                            }
+                    )
+                }
+            }
+        }
+
+
+    }
+}
+
+@Composable
+private fun DetailsTabs(
+    uiState: PokemonDetailsUiState,
+    modifier: Modifier = Modifier,
+    padding: PaddingValues,
+    onTabSelected: (PokemonDetailsUiState.Tab) -> Unit,
+) {
+    Surface(
+        color = MaterialTheme.colorScheme.background,
+        contentColor = MaterialTheme.colorScheme.onBackground,
+        shape = RoundedCornerShape(
+            topStart = Dimensions.drawerCornerRadius,
+            topEnd = Dimensions.drawerCornerRadius
+        ),
+        modifier = modifier.fillMaxSize()
+    ) {
+        Column(
+            modifier = Modifier.padding(padding)
+        ) {
+            TabRow(selectedTabIndex = uiState.tabs.indexOf(uiState.currentTab)) {
+                uiState.tabs.forEach {
+                    Tab(
+                        selected = uiState.currentTab == it,
+                        onClick = { onTabSelected(it) },
+                        text = { Text(stringResource(it.titleId)) }
+                    )
+                }
+            }
+
+            Box(
+                modifier = Modifier.padding(Dimensions.screenPadding)
+            ) {
+                if (uiState.pokemon == null) {
+                    CircularProgressIndicator()
+                } else {
+                    when(uiState.currentTab) {
+                        PokemonDetailsUiState.Tab.About -> About(pokemon = uiState.pokemon)
+                        PokemonDetailsUiState.Tab.BaseStats -> BaseStats(stats = uiState.pokemon.stats)
+                        PokemonDetailsUiState.Tab.Evolution -> Evolution(pokemon = uiState.pokemon)
+                    }
+                }
+            }
+        }
+    }
+
+
+}
+
+@Preview(widthDp = 412, heightDp = 892)
+@Composable
+private fun PreviewPokemonDetails() {
+    MaterialTheme{
+        var currentTab by remember { mutableStateOf(PokemonDetailsUiState.Tab.About) }
+
+        PokemonDetailsContent(
+            uiState = PokemonDetailsUiState(
+                pokemon = PokemonDetailsUiState.Pokemon(
+                    "Bulbizarre",
+                    1,
+                    listOf(Type.GRASS, Type.POISON),
+                    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+                    com.orghaniian.data.model.Color.GREEN,
+                    0.1f,
+                    2f,
+                    .7f,
+                    listOf(
+                        PokemonStat(Stat.HP, 45),
+                        PokemonStat(Stat.ATTACK, 70)
+                    )
+                ),
+                currentTab = currentTab,
+                tabs = PokemonDetailsUiState.Tab.values().asList()
+            ),
+            onTabSelected = { currentTab = it}
+        )
+    }
+}

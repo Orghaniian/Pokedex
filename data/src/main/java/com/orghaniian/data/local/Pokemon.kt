@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.orghaniian.data.model.Color
+import com.orghaniian.data.model.Stat
 import com.orghaniian.data.model.Type
 
 @Entity(tableName = "pokemons")
@@ -16,4 +17,10 @@ data class Pokemon(
     @ColumnInfo(name = "gender_rate") val genderRate: Float,
     @ColumnInfo(name = "height") val height: Float,
     @ColumnInfo(name = "weight") val weight: Float,
+    @ColumnInfo(name = "stats") val stats: List<PokemonStat>,
+)
+
+data class PokemonStat(
+    val stat: Stat,
+    val value: Int
 )

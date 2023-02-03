@@ -1,13 +1,13 @@
 package com.orghaniian.pokedex.ui.utils
 
-import android.content.Context
-import android.graphics.drawable.Drawable
-import androidx.core.content.ContextCompat
-import com.orghaniian.pokedex.R
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import com.orghaniian.data.model.Type
 import com.orghaniian.data.model.Type.*
+import com.orghaniian.pokedex.R
 
-fun Type.getIconDrawable(context: Context): Drawable? = when(this) {
+@DrawableRes
+fun Type.getIconResourceId(): Int = when(this) {
     NORMAL -> R.drawable.normal
     FIGHTING -> R.drawable.fighting
     FLYING -> R.drawable.flying
@@ -28,10 +28,9 @@ fun Type.getIconDrawable(context: Context): Drawable? = when(this) {
     FAIRY -> R.drawable.fairy
     UNKNOWN -> R.drawable.unknown
     SHADOW -> R.drawable.dark
-}.let { drawableId ->
-    return ContextCompat.getDrawable(context, drawableId)
 }
 
+@get:StringRes
 val Type.stringResourceID: Int
     get() = when (this) {
         NORMAL -> R.string.type_normal
