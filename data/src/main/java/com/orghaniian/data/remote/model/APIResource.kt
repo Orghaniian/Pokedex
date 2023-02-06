@@ -1,7 +1,10 @@
 package com.orghaniian.data.remote.model
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
- data class APIResource(
-    @SerializedName("name") val name: String,
+
+@Serializable
+ internal data class APIResource(
+    @SerialName("url") val url: String,
 )

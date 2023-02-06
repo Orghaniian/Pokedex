@@ -18,7 +18,7 @@ import javax.inject.Singleton
 
 @Singleton
 @OptIn(ExperimentalPagingApi::class)
-class PokemonRepositoryImpl @Inject constructor(
+internal class PokemonRepositoryImpl @Inject constructor(
     private val pokemonLocalDataSource: PokemonLocalDataSource,
     private val pokemonRemoteDataSource: PokemonRemoteDataSource
 ) : PokemonRepository {

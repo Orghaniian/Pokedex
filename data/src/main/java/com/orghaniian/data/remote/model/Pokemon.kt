@@ -1,36 +1,43 @@
 package com.orghaniian.data.remote.model
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
- data class Pokemon(
-    @SerializedName("name") val name: String,
-    @SerializedName("id") val id: Int,
-    @SerializedName("types") val types: List<PokemonType>,
-    @SerializedName("sprites") val sprites: PokemonSprites,
-    @SerializedName("height") val height: Int,
-    @SerializedName("weight") val weight: Int,
-    @SerializedName("stats") val stats: List<PokemonStat>,
+@Serializable
+ internal data class Pokemon(
+    @SerialName("name") val name: String,
+    @SerialName("id") val id: Int,
+    @SerialName("types") val types: List<PokemonType>,
+    @SerialName("sprites") val sprites: PokemonSprites,
+    @SerialName("height") val height: Int,
+    @SerialName("weight") val weight: Int,
+    @SerialName("stats") val stats: List<PokemonStat>,
 )
 
- data class PokemonType(
-    @SerializedName("slot") val slot: Int,
-    @SerializedName("type") val type: TypeResource
+@Serializable
+ internal data class PokemonType(
+    @SerialName("slot") val slot: Int,
+    @SerialName("type") val type: TypeResource
 )
 
- data class PokemonSprites(
-     @SerializedName("other") val other: Other
+@Serializable
+ internal data class PokemonSprites(
+     @SerialName("other") val other: Other
 )
 
- data class Other(
-    @SerializedName("official-artwork") val officialArtwork: OfficialArtwork
+@Serializable
+ internal data class Other(
+    @SerialName("official-artwork") val officialArtwork: OfficialArtwork
 )
 
- data class OfficialArtwork(
-    @SerializedName("front_default") val frontDefault: String
+@Serializable
+ internal data class OfficialArtwork(
+    @SerialName("front_default") val frontDefault: String
 )
 
-data class PokemonStat(
-    @SerializedName("stat") val stat: NamedAPIResource,
-    @SerializedName("effort") val effort: Int,
-    @SerializedName("base_stat") val baseState: Int,
+@Serializable
+internal data class PokemonStat(
+    @SerialName("stat") val stat: NamedAPIResource,
+    @SerialName("effort") val effort: Int,
+    @SerialName("base_stat") val baseState: Int,
 )

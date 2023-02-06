@@ -13,8 +13,8 @@ import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
 import javax.inject.Inject
 
-class PokemonRemoteDataSource @Inject constructor(private val pokeApiService: PokeApiService) {
-    suspend fun getAllPokemon(locales: LocaleListCompat, limit: Int? = null, offset: Int? = null) = pokeApiService.run {
+internal class PokemonRemoteDataSource @Inject constructor(private val pokeApi: PokeApi) {
+    suspend fun getAllPokemon(locales: LocaleListCompat, limit: Int? = null, offset: Int? = null) = pokeApi.run {
         val apiResponse = getPokemon(limit, offset)
 
         val pokemons = coroutineScope {
@@ -31,9 +31,9 @@ class PokemonRemoteDataSource @Inject constructor(private val pokeApiService: Po
         )
     }
 
-    suspend fun getPokemon(locales: LocaleListCompat, order: Int) = pokeApiService.run { fetchPokemon(order.toString(), locales) }
+    suspend fun getPokemon(locales: LocaleListCompat, order: Int) = pokeApi.run { fetchPokemon(order.toString(), locales) }
 
-    private suspend fun PokeApiService.fetchPokemon(name: String, locales: LocaleListCompat): Pokemon {
+    private suspend fun PokeApi.fetchPokemon(name: String, locales: LocaleListCompat): Pokemon {
         val pokemon = getPokemon(name)
         val species = getPokemonSpecies(name)
 

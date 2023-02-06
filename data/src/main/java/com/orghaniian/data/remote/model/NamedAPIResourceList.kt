@@ -1,10 +1,12 @@
 package com.orghaniian.data.remote.model
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-data class NamedAPIResourceList(
-    @SerializedName("count") val count: Int,
-    @SerializedName("next") val next: String?,
-    @SerializedName("previous") val previous: String?,
-    @SerializedName("results") val results: List<NamedAPIResource>
+@Serializable
+internal data class NamedAPIResourceList(
+    @SerialName("count") val count: Int,
+    @SerialName("next") val next: String?,
+    @SerialName("previous") val previous: String?,
+    @SerialName("results") val results: List<NamedAPIResource>
 )

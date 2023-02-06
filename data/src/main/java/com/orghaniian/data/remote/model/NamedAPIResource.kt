@@ -1,12 +1,14 @@
 package com.orghaniian.data.remote.model
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
- data class NamedAPIResource (
-    @SerializedName("name") val name: String,
-    @SerializedName("url") val url: String
+@Serializable
+ internal data class NamedAPIResource (
+    @SerialName("name") val name: String,
+    @SerialName("url") val url: String
 )
 
- typealias ColorResource = NamedAPIResource
- typealias TypeResource = NamedAPIResource
- typealias LanguageResource = NamedAPIResource
+ internal typealias ColorResource = NamedAPIResource
+ internal typealias TypeResource = NamedAPIResource
+ internal typealias LanguageResource = NamedAPIResource

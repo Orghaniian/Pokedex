@@ -9,15 +9,15 @@ import androidx.paging.RemoteMediator.InitializeAction.SKIP_INITIAL_REFRESH
 import com.orghaniian.data.local.Pokemon
 import com.orghaniian.data.local.PokemonLocalDataSource
 import com.orghaniian.data.remote.PokemonRemoteDataSource
+import io.ktor.client.plugins.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.HttpException
 import java.io.IOException
 import java.util.*
 
 @OptIn(ExperimentalPagingApi::class)
- class PokemonRemoteMediator(
+ internal class PokemonRemoteMediator(
     private val pokemonRemoteDataSource: PokemonRemoteDataSource,
     private val pokemonLocalDataSource: PokemonLocalDataSource,
     private val locales: LocaleListCompat
@@ -46,7 +46,7 @@ import java.util.*
             MediatorResult.Success(!response.next)
         } catch (e: IOException) {
             MediatorResult.Error(e)
-        } catch (e: HttpException) {
+        } catch (e: ResponseException) {
             MediatorResult.Error(e)
         }
     }
