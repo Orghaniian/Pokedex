@@ -18,8 +18,14 @@ internal class PokemonRemoteDataSource @Inject constructor(private val pokeApi: 
         val apiResponse = getPokemon(limit, offset)
 
         val pokemons = coroutineScope {
-            apiResponse.results.map { (name, _) ->
-                async { fetchPokemon(name, locales) }
+            apiResponse.results.map { (_, url) ->
+                async {
+                    val order = url
+                        .substringAfter("https://pokeapi.co/api/v2/pokemon/")
+                        .substringBefore("/")
+                        .toInt()
+                    fetchPokemon(order, locales)
+                }
             }.awaitAll()
         }
 
@@ -31,16 +37,19 @@ internal class PokemonRemoteDataSource @Inject constructor(private val pokeApi: 
         )
     }
 
-    suspend fun getPokemon(locales: LocaleListCompat, order: Int) = pokeApi.run { fetchPokemon(order.toString(), locales) }
+    suspend fun getPokemon(locales: LocaleListCompat, order: Int) = pokeApi.run { fetchPokemon(order, locales) }
 
-    private suspend fun PokeApi.fetchPokemon(name: String, locales: LocaleListCompat): Pokemon {
-        val pokemon = getPokemon(name)
-        val species = getPokemonSpecies(name)
+    private suspend fun PokeApi.fetchPokemon(order: Int, locales: LocaleListCompat): Pokemon = coroutineScope {
+        val pokemonAsync = async { getPokemon(order) }
+        val speciesAsync = async { getPokemonSpecies(order) }
+
+        val pokemon = pokemonAsync.await()
+        val species = speciesAsync.await()
 
         val availableLocalesForName = species.names.map { it.language.name }
         val localeForName = locales.getFirstMatch(availableLocalesForName.toTypedArray())
 
-        return Pokemon(
+        return@coroutineScope Pokemon(
             pokemon.id,
             species.names.firstOrNull { it.language.name == localeForName?.language }?.name ?: pokemon.name,
             pokemon.types.toListOfType(),
