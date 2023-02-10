@@ -79,6 +79,7 @@ dependencies {
     implementation libs.hilt.navigation.compose
 
     implementation libs.coil.compose
+    implementation libs.coil.gif
 
     implementation libs.google.fonts
 }
