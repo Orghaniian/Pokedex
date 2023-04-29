@@ -1,0 +1,37 @@
+query ListPokemon($limit: Int, $offset: Int, $where: pokemon_v2_pokemon_bool_exp) {
+  pokemon_v2_pokemon(limit: $limit, offset: $offset, where: $where) {
+    id
+    order
+    height
+    name
+    weight
+    pokemon_v2_pokemonspecy {
+      gender_rate
+      pokemon_v2_pokemoncolor {
+        name
+      }
+      pokemon_v2_pokemonspecies {
+        pokemon_v2_pokemonspeciesnames {
+          name
+          pokemon_v2_language {
+            iso639
+          }
+        }
+      }
+    }
+    pokemon_v2_pokemontypes {
+      pokemon_v2_type {
+        name
+      }
+    }
+    pokemon_v2_pokemonsprites {
+      sprites
+    }
+    pokemon_v2_pokemonstats {
+      pokemon_v2_stat {
+        name
+      }
+      base_stat
+    }
+  }
+}

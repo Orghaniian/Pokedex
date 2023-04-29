@@ -3,6 +3,8 @@ plugins {
     alias libs.plugins.org.jetbrains.kotlin.android
     alias libs.plugins.org.jetbrains.kotlin.kapt
     alias libs.plugins.com.google.dagger.hilt.android
+    alias libs.plugins.kotlin.serialization
+    alias libs.plugins.apollographql
 }
 
 android {
@@ -23,27 +25,33 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
 }
 
 dependencies {
     implementation libs.androidx.core.ktx
 
-    implementation libs.com.squareup.retrofit
-    implementation libs.com.squareup.retrofit.converter.gson
-
     implementation libs.androidx.room.ktx
     implementation libs.androidx.room.paging
     implementation libs.androidx.room.runtime
+    implementation libs.androidx.core.ktx
     kapt libs.androidx.room.compiler
 
     implementation libs.com.google.dagger.hilt.android
     kapt libs.com.google.dagger.hilt.compiler
 
+    implementation libs.apollographql
+
     testImplementation libs.junit
+}
+
+apollo {
+    service("pokemonService") {
+        packageName.set("com.orghaniian.data")
+    }
 }

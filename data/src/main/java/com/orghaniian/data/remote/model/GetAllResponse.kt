@@ -1,6 +1,6 @@
 package com.orghaniian.data.remote.model
 
- data class GetAllResponse<T> (
+internal  data class GetAllResponse<T> (
     val count: Int,
     val next: Boolean,
     val previous: Boolean,

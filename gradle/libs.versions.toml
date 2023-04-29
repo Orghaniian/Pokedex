@@ -1,6 +1,7 @@
 [versions]
+kotlin = "1.8.10"
 junit = "4.13.2"
-androidx-core = "1.9.0"
+androidx-core = "1.10.0"
 androidx-appcompat = "1.6.0"
 androidx-navigation = "2.5.3"
 androidx-viewpager2 = "1.0.0"
@@ -12,11 +13,11 @@ com-google-dagger = "2.44.2"
 org-jetbrains-kotlinx-coroutines = "1.6.4"
 org-jetbrains-kotlin = "1.8.0"
 com-squareup-retrofit = "2.9.0"
-com-android-tools-build-gradle = "7.4.1"
+com-android-tools-build-gradle = "8.0.0"
 androidx-compose = "1.4.0-alpha04"
 androidx-compose-material = "1.1.0-alpha04"
 androidx-compose-runtime = "1.3.3"
-androidx-compose-compiler = "1.4.0"
+androidx-compose-compiler = "1.4.2"
 androidx-paging-compose = "1.0.0-alpha17"
 androidx-constraintlayout-compose = "1.1.0-alpha05"
 com-google-accompanist = "0.29.0-alpha"
@@ -25,6 +26,11 @@ androidx-lifecycle-compose = "2.6.0-alpha04"
 androidx-activity-compose = "1.6.1"
 hilt = "1.1.0-alpha01"
 google-font = "1.4.0-alpha04"
+ktor = "2.2.3"
+koin = "3.3.2"
+koin-ktor = "3.3.0"
+serialization = "1.8.0"
+apollographql = "3.8.1"
 
 [libraries]
 junit = { module = "junit:junit", version.ref = "junit" }
@@ -63,7 +69,16 @@ hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", ve
 com-google-accompanist-themeadapter-material3 = { module = "com.google.accompanist:accompanist-themeadapter-material3", version.ref = "com-google-accompanist" }
 
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+coil-gif = { module = "io.coil-kt:coil-gif", version.ref = "coil" }
+
 google-fonts = { module = "androidx.compose.ui:ui-text-google-fonts", version.ref = "google-font" }
+
+ktor-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktor-contentnegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-serialization-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+apollographql = { module = "com.apollographql.apollo3:apollo-runtime", version.ref = "apollographql" }
 
 
 [plugins]
@@ -71,5 +86,7 @@ androidx-navigation-safeargs-kotlin = { id = "androidx.navigation.safeargs.kotli
 com-android-application = { id = "com.android.application", version.ref = "com-android-tools-build-gradle" }
 com-android-library = { id = "com.android.library", version.ref = "com-android-tools-build-gradle" }
 com-google-dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "com-google-dagger" }
-org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin" }
+org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 org-jetbrains-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "org-jetbrains-kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "serialization" }
+apollographql = { id = "com.apollographql.apollo3", version.ref = "apollographql" }
