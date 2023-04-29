@@ -9,7 +9,6 @@ import androidx.paging.RemoteMediator.InitializeAction.SKIP_INITIAL_REFRESH
 import com.orghaniian.data.local.Pokemon
 import com.orghaniian.data.local.PokemonLocalDataSource
 import com.orghaniian.data.remote.PokemonRemoteDataSource
-import io.ktor.client.plugins.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -45,8 +44,6 @@ import java.util.*
 
             MediatorResult.Success(!response.next)
         } catch (e: IOException) {
-            MediatorResult.Error(e)
-        } catch (e: ResponseException) {
             MediatorResult.Error(e)
         }
     }
